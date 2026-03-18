@@ -13,7 +13,8 @@ namespace QL_Diem
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new fHocSinh());
+            Application.Run(new fDangNhap());
+            //Application.Run(new fHocSinh());
             //Application.Run(new fMonHoc());
         }
     }

@@ -10,20 +10,11 @@ using System.Windows.Forms;
 
 namespace QL_Diem.Forms
 {
-    public partial class fHocSinh : Form
+    public partial class fTaiKhoan : Form
     {
-
-        public fHocSinh()
+        public fTaiKhoan()
         {
             InitializeComponent();
-        }
-
-        private void quảnLýTàiKhoảnToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            fTaiKhoan f = new fTaiKhoan();
-            this.Hide();
-            f.ShowDialog();
-            this.Show();
         }
     }
 }
