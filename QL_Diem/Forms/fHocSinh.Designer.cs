@@ -113,12 +113,14 @@
             quảnLýMônHọcToolStripMenuItem.Name = "quảnLýMônHọcToolStripMenuItem";
             quảnLýMônHọcToolStripMenuItem.Size = new Size(232, 26);
             quảnLýMônHọcToolStripMenuItem.Text = "Quản lý môn học";
+            quảnLýMônHọcToolStripMenuItem.Click += quảnLýMônHọcToolStripMenuItem_Click;
             // 
             // quảnLýLớpHọcToolStripMenuItem
             // 
             quảnLýLớpHọcToolStripMenuItem.Name = "quảnLýLớpHọcToolStripMenuItem";
             quảnLýLớpHọcToolStripMenuItem.Size = new Size(232, 26);
             quảnLýLớpHọcToolStripMenuItem.Text = "Quản lý lớp học";
+            quảnLýLớpHọcToolStripMenuItem.Click += quảnLýLớpHọcToolStripMenuItem_Click;
             // 
             // quảnLýĐiểmToolStripMenuItem
             // 
@@ -246,7 +248,7 @@
             // txtDiaChi
             // 
             txtDiaChi.Font = new Font("Times New Roman", 10.2F);
-            txtDiaChi.Location = new Point(83, 94);
+            txtDiaChi.Location = new Point(83, 101);
             txtDiaChi.MaxLength = 255;
             txtDiaChi.Name = "txtDiaChi";
             txtDiaChi.Size = new Size(509, 27);
@@ -256,7 +258,7 @@
             // 
             label10.AutoSize = true;
             label10.Font = new Font("Times New Roman", 10.2F);
-            label10.Location = new Point(17, 98);
+            label10.Location = new Point(17, 105);
             label10.Name = "label10";
             label10.Size = new Size(63, 19);
             label10.TabIndex = 69;

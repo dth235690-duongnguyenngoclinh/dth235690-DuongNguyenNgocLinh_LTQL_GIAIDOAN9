@@ -25,5 +25,21 @@ namespace QL_Diem.Forms
             f.ShowDialog();
             this.Show();
         }
+
+        private void quảnLýLớpHọcToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            fLop f = new fLop();
+            this.Hide();
+            f.ShowDialog();
+            this.Show();
+        }
+
+        private void quảnLýMônHọcToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            fMonHoc f = new fMonHoc();
+            this.Hide();
+            f.ShowDialog();
+            this.Show();
+        }
     }
 }

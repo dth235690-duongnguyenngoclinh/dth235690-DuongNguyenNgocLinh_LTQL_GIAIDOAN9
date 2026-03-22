@@ -7,7 +7,7 @@ namespace QL_DiemTruongTieuHoc.Data
     public class QLDiemDbContext : DbContext
     {
         public DbSet<HocSinh> HocSinhs { get; set; } // Khai báo bảng HocSinh [cite: 232]
-        public DbSet<LopHoc> LopHocs { get; set; }
+        public DbSet<Lop> LopHocs { get; set; }
         public DbSet<MonHoc> MonHoc { get; set; }
         public DbSet<BangDiem> BangDiems { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
