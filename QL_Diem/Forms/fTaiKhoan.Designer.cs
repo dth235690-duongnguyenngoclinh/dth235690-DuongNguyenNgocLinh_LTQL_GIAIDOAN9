@@ -68,13 +68,13 @@
             panel1.Location = new Point(0, 0);
             panel1.Margin = new Padding(4);
             panel1.Name = "panel1";
-            panel1.Size = new Size(628, 119);
+            panel1.Size = new Size(645, 119);
             panel1.TabIndex = 0;
             // 
             // button1
             // 
             button1.Font = new Font("Times New Roman", 10.2F);
-            button1.Location = new Point(358, 70);
+            button1.Location = new Point(376, 71);
             button1.Name = "button1";
             button1.Size = new Size(74, 32);
             button1.TabIndex = 6;
@@ -84,7 +84,7 @@
             // btnLamMoi
             // 
             btnLamMoi.Font = new Font("Times New Roman", 10.2F);
-            btnLamMoi.Location = new Point(451, 70);
+            btnLamMoi.Location = new Point(469, 71);
             btnLamMoi.Name = "btnLamMoi";
             btnLamMoi.Size = new Size(86, 32);
             btnLamMoi.TabIndex = 7;
@@ -94,7 +94,7 @@
             // btnXoa
             // 
             btnXoa.Font = new Font("Times New Roman", 10.2F);
-            btnXoa.Location = new Point(267, 70);
+            btnXoa.Location = new Point(285, 71);
             btnXoa.Name = "btnXoa";
             btnXoa.Size = new Size(74, 32);
             btnXoa.TabIndex = 5;
@@ -104,7 +104,7 @@
             // btnSua
             // 
             btnSua.Font = new Font("Times New Roman", 10.2F);
-            btnSua.Location = new Point(172, 70);
+            btnSua.Location = new Point(190, 71);
             btnSua.Name = "btnSua";
             btnSua.Size = new Size(74, 32);
             btnSua.TabIndex = 4;
@@ -114,7 +114,7 @@
             // btnThem
             // 
             btnThem.Font = new Font("Times New Roman", 10.2F);
-            btnThem.Location = new Point(78, 70);
+            btnThem.Location = new Point(96, 71);
             btnThem.Name = "btnThem";
             btnThem.Size = new Size(74, 32);
             btnThem.TabIndex = 3;
@@ -123,49 +123,50 @@
             // 
             // txtMatKhau
             // 
-            txtMatKhau.Location = new Point(497, 23);
+            txtMatKhau.Location = new Point(535, 28);
             txtMatKhau.Name = "txtMatKhau";
-            txtMatKhau.Size = new Size(125, 27);
+            txtMatKhau.Size = new Size(98, 27);
             txtMatKhau.TabIndex = 2;
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(404, 27);
+            label3.Location = new Point(437, 32);
             label3.Margin = new Padding(4, 0, 4, 0);
             label3.Name = "label3";
-            label3.Size = new Size(76, 19);
+            label3.Size = new Size(100, 19);
             label3.TabIndex = 4;
-            label3.Text = "Mật khẩu:";
+            label3.Text = "MẬT KHẨU:";
             // 
             // txtTenDangNhap
             // 
-            txtTenDangNhap.Location = new Point(255, 23);
+            txtTenDangNhap.Location = new Point(266, 28);
             txtTenDangNhap.Name = "txtTenDangNhap";
-            txtTenDangNhap.Size = new Size(125, 27);
+            txtTenDangNhap.Size = new Size(166, 27);
             txtTenDangNhap.TabIndex = 1;
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(138, 27);
+            label2.Location = new Point(112, 32);
             label2.Margin = new Padding(4, 0, 4, 0);
             label2.Name = "label2";
-            label2.Size = new Size(110, 19);
+            label2.Size = new Size(145, 19);
             label2.TabIndex = 2;
-            label2.Text = "Tên đăng nhập:";
+            label2.Text = "TÊN ĐĂNG NHẬP:";
             // 
             // txtID
             // 
-            txtID.Location = new Point(53, 23);
+            txtID.Enabled = false;
+            txtID.Location = new Point(51, 28);
             txtID.Name = "txtID";
-            txtID.Size = new Size(65, 27);
+            txtID.Size = new Size(54, 27);
             txtID.TabIndex = 0;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(15, 27);
+            label1.Location = new Point(13, 32);
             label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
             label1.Size = new Size(31, 19);
@@ -179,7 +180,7 @@
             panel2.Location = new Point(0, 119);
             panel2.Margin = new Padding(4);
             panel2.Name = "panel2";
-            panel2.Size = new Size(628, 371);
+            panel2.Size = new Size(645, 371);
             panel2.TabIndex = 1;
             // 
             // dgvTaiKhoan
@@ -198,7 +199,7 @@
             dgvTaiKhoan.RowHeadersWidth = 51;
             dgvTaiKhoan.RowTemplate.Height = 30;
             dgvTaiKhoan.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvTaiKhoan.Size = new Size(628, 371);
+            dgvTaiKhoan.Size = new Size(645, 371);
             dgvTaiKhoan.TabIndex = 1;
             dgvTaiKhoan.TabStop = false;
             // 
@@ -238,7 +239,7 @@
             // 
             AutoScaleDimensions = new SizeF(9F, 19F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(628, 490);
+            ClientSize = new Size(645, 490);
             Controls.Add(panel2);
             Controls.Add(panel1);
             Font = new Font("Times New Roman", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);

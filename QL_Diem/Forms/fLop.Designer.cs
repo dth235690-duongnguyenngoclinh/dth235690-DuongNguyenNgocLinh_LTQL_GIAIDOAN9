@@ -77,7 +77,7 @@
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(651, 125);
+            panel1.Size = new Size(697, 125);
             panel1.TabIndex = 0;
             // 
             // cmbGVCN
@@ -197,12 +197,13 @@
             label2.Location = new Point(95, 36);
             label2.Margin = new Padding(4, 0, 4, 0);
             label2.Name = "label2";
-            label2.Size = new Size(62, 19);
+            label2.Size = new Size(76, 19);
             label2.TabIndex = 12;
-            label2.Text = "Mã lớp:";
+            label2.Text = "MÃ LỚP:";
             // 
             // txtID
             // 
+            txtID.Enabled = false;
             txtID.Location = new Point(48, 32);
             txtID.Name = "txtID";
             txtID.Size = new Size(38, 27);
@@ -224,7 +225,7 @@
             panel2.Dock = DockStyle.Fill;
             panel2.Location = new Point(0, 125);
             panel2.Name = "panel2";
-            panel2.Size = new Size(651, 371);
+            panel2.Size = new Size(697, 371);
             panel2.TabIndex = 1;
             // 
             // dgvLop
@@ -243,7 +244,7 @@
             dgvLop.RowHeadersWidth = 51;
             dgvLop.RowTemplate.Height = 30;
             dgvLop.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvLop.Size = new Size(651, 371);
+            dgvLop.Size = new Size(697, 371);
             dgvLop.TabIndex = 2;
             dgvLop.TabStop = false;
             // 
@@ -291,7 +292,7 @@
             // 
             AutoScaleDimensions = new SizeF(9F, 19F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(651, 496);
+            ClientSize = new Size(697, 496);
             Controls.Add(panel2);
             Controls.Add(panel1);
             Font = new Font("Times New Roman", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);

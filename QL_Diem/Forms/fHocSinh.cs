@@ -12,34 +12,9 @@ namespace QL_Diem.Forms
 {
     public partial class fHocSinh : Form
     {
-
         public fHocSinh()
         {
             InitializeComponent();
-        }
-
-        private void quảnLýTàiKhoảnToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            fTaiKhoan f = new fTaiKhoan();
-            this.Hide();
-            f.ShowDialog();
-            this.Show();
-        }
-
-        private void quảnLýLớpHọcToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            fLop f = new fLop();
-            this.Hide();
-            f.ShowDialog();
-            this.Show();
-        }
-
-        private void quảnLýMônHọcToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            fMonHoc f = new fMonHoc();
-            this.Hide();
-            f.ShowDialog();
-            this.Show();
         }
     }
 }
