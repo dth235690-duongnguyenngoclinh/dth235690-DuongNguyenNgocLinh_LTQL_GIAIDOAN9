@@ -217,7 +217,7 @@
             Column2.MinimumWidth = 6;
             Column2.Name = "Column2";
             Column2.ReadOnly = true;
-            Column2.Width = 200;
+            Column2.Width = 250;
             // 
             // Column3
             // 
@@ -245,6 +245,7 @@
             Font = new Font("Times New Roman", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             Margin = new Padding(4);
             Name = "fTaiKhoan";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "fTaiKhoan";
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
@@ -260,10 +261,6 @@
         private DataGridView dgvTaiKhoan;
         private TextBox txtID;
         private Label label1;
-        private DataGridViewTextBoxColumn Column1;
-        private DataGridViewTextBoxColumn Column2;
-        private DataGridViewTextBoxColumn Column3;
-        private DataGridViewTextBoxColumn Column9;
         private TextBox txtMatKhau;
         private Label label3;
         private TextBox txtTenDangNhap;
@@ -273,5 +270,9 @@
         private Button btnXoa;
         private Button btnSua;
         private Button btnThem;
+        private DataGridViewTextBoxColumn Column1;
+        private DataGridViewTextBoxColumn Column2;
+        private DataGridViewTextBoxColumn Column3;
+        private DataGridViewTextBoxColumn Column9;
     }
 }

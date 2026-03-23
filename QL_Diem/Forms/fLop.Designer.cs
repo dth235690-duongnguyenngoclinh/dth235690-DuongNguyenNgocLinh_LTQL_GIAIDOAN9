@@ -77,13 +77,13 @@
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(697, 125);
+            panel1.Size = new Size(680, 125);
             panel1.TabIndex = 0;
             // 
             // cmbGVCN
             // 
             cmbGVCN.FormattingEnabled = true;
-            cmbGVCN.Location = new Point(467, 32);
+            cmbGVCN.Location = new Point(491, 32);
             cmbGVCN.Name = "cmbGVCN";
             cmbGVCN.Size = new Size(181, 27);
             cmbGVCN.TabIndex = 3;
@@ -91,7 +91,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(400, 36);
+            label5.Location = new Point(430, 36);
             label5.Margin = new Padding(4, 0, 4, 0);
             label5.Name = "label5";
             label5.Size = new Size(60, 19);
@@ -100,7 +100,7 @@
             // 
             // numSoLuong
             // 
-            numSoLuong.Location = new Point(108, 78);
+            numSoLuong.Location = new Point(131, 78);
             numSoLuong.Name = "numSoLuong";
             numSoLuong.Size = new Size(49, 27);
             numSoLuong.TabIndex = 4;
@@ -111,14 +111,14 @@
             label4.Location = new Point(26, 82);
             label4.Margin = new Padding(4, 0, 4, 0);
             label4.Name = "label4";
-            label4.Size = new Size(75, 19);
+            label4.Size = new Size(98, 19);
             label4.TabIndex = 19;
-            label4.Text = "Số lượng:";
+            label4.Text = "SỐ LƯỢNG:";
             // 
             // button1
             // 
             button1.Font = new Font("Times New Roman", 10.2F);
-            button1.Location = new Point(411, 75);
+            button1.Location = new Point(458, 76);
             button1.Name = "button1";
             button1.Size = new Size(74, 30);
             button1.TabIndex = 8;
@@ -128,7 +128,7 @@
             // btnLamMoi
             // 
             btnLamMoi.Font = new Font("Times New Roman", 10.2F);
-            btnLamMoi.Location = new Point(491, 75);
+            btnLamMoi.Location = new Point(538, 76);
             btnLamMoi.Name = "btnLamMoi";
             btnLamMoi.Size = new Size(86, 30);
             btnLamMoi.TabIndex = 9;
@@ -138,7 +138,7 @@
             // btnXoa
             // 
             btnXoa.Font = new Font("Times New Roman", 10.2F);
-            btnXoa.Location = new Point(331, 75);
+            btnXoa.Location = new Point(378, 76);
             btnXoa.Name = "btnXoa";
             btnXoa.Size = new Size(74, 30);
             btnXoa.TabIndex = 7;
@@ -148,7 +148,7 @@
             // btnSua
             // 
             btnSua.Font = new Font("Times New Roman", 10.2F);
-            btnSua.Location = new Point(251, 75);
+            btnSua.Location = new Point(298, 76);
             btnSua.Name = "btnSua";
             btnSua.Size = new Size(74, 30);
             btnSua.TabIndex = 6;
@@ -158,7 +158,7 @@
             // btnThem
             // 
             btnThem.Font = new Font("Times New Roman", 10.2F);
-            btnThem.Location = new Point(171, 75);
+            btnThem.Location = new Point(218, 76);
             btnThem.Name = "btnThem";
             btnThem.Size = new Size(74, 30);
             btnThem.TabIndex = 5;
@@ -167,7 +167,7 @@
             // 
             // txtMatKhau
             // 
-            txtMatKhau.Location = new Point(319, 32);
+            txtMatKhau.Location = new Point(349, 32);
             txtMatKhau.MaxLength = 255;
             txtMatKhau.Name = "txtMatKhau";
             txtMatKhau.Size = new Size(74, 27);
@@ -176,16 +176,16 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(247, 36);
+            label3.Location = new Point(261, 36);
             label3.Margin = new Padding(4, 0, 4, 0);
             label3.Name = "label3";
-            label3.Size = new Size(65, 19);
+            label3.Size = new Size(81, 19);
             label3.TabIndex = 15;
-            label3.Text = "Tên lớp:";
+            label3.Text = "TÊN LỚP:";
             // 
             // txtTenDangNhap
             // 
-            txtTenDangNhap.Location = new Point(164, 32);
+            txtTenDangNhap.Location = new Point(178, 32);
             txtTenDangNhap.MaxLength = 255;
             txtTenDangNhap.Name = "txtTenDangNhap";
             txtTenDangNhap.Size = new Size(76, 27);
@@ -225,7 +225,7 @@
             panel2.Dock = DockStyle.Fill;
             panel2.Location = new Point(0, 125);
             panel2.Name = "panel2";
-            panel2.Size = new Size(697, 371);
+            panel2.Size = new Size(680, 371);
             panel2.TabIndex = 1;
             // 
             // dgvLop
@@ -244,7 +244,7 @@
             dgvLop.RowHeadersWidth = 51;
             dgvLop.RowTemplate.Height = 30;
             dgvLop.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvLop.Size = new Size(697, 371);
+            dgvLop.Size = new Size(680, 371);
             dgvLop.TabIndex = 2;
             dgvLop.TabStop = false;
             // 
@@ -254,7 +254,7 @@
             Column1.MinimumWidth = 6;
             Column1.Name = "Column1";
             Column1.ReadOnly = true;
-            Column1.Width = 130;
+            Column1.Width = 75;
             // 
             // Column2
             // 
@@ -262,7 +262,7 @@
             Column2.MinimumWidth = 6;
             Column2.Name = "Column2";
             Column2.ReadOnly = true;
-            Column2.Width = 129;
+            Column2.Width = 140;
             // 
             // Column3
             // 
@@ -278,7 +278,7 @@
             Column9.MinimumWidth = 6;
             Column9.Name = "Column9";
             Column9.ReadOnly = true;
-            Column9.Width = 129;
+            Column9.Width = 400;
             // 
             // Column4
             // 
@@ -292,11 +292,12 @@
             // 
             AutoScaleDimensions = new SizeF(9F, 19F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(697, 496);
+            ClientSize = new Size(680, 496);
             Controls.Add(panel2);
             Controls.Add(panel1);
             Font = new Font("Times New Roman", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             Name = "fLop";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "fLop";
             panel1.ResumeLayout(false);
             panel1.PerformLayout();

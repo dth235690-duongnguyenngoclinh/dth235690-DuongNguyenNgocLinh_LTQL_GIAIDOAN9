@@ -33,6 +33,7 @@
             quảnLýLớpToolStripMenuItem = new ToolStripMenuItem();
             quảnLýMônToolStripMenuItem = new ToolStripMenuItem();
             qUaToolStripMenuItem = new ToolStripMenuItem();
+            quảnLýTàiKhoảnToolStripMenuItem = new ToolStripMenuItem();
             tàiKhoảnToolStripMenuItem = new ToolStripMenuItem();
             thôngTinChiTiếtToolStripMenuItem = new ToolStripMenuItem();
             đổiMậtKhẩuToolStripMenuItem = new ToolStripMenuItem();
@@ -95,7 +96,7 @@
             // 
             // quảnLýToolStripMenuItem
             // 
-            quảnLýToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { quảnLýLớpToolStripMenuItem, quảnLýMônToolStripMenuItem, qUaToolStripMenuItem });
+            quảnLýToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { quảnLýLớpToolStripMenuItem, quảnLýMônToolStripMenuItem, qUaToolStripMenuItem, quảnLýTàiKhoảnToolStripMenuItem });
             quảnLýToolStripMenuItem.Name = "quảnLýToolStripMenuItem";
             quảnLýToolStripMenuItem.Size = new Size(86, 26);
             quảnLýToolStripMenuItem.Text = "Quản lý";
@@ -103,20 +104,30 @@
             // quảnLýLớpToolStripMenuItem
             // 
             quảnLýLớpToolStripMenuItem.Name = "quảnLýLớpToolStripMenuItem";
-            quảnLýLớpToolStripMenuItem.Size = new Size(200, 26);
+            quảnLýLớpToolStripMenuItem.Size = new Size(232, 26);
             quảnLýLớpToolStripMenuItem.Text = "Quản lý lớp";
+            quảnLýLớpToolStripMenuItem.Click += quảnLýLớpToolStripMenuItem_Click;
             // 
             // quảnLýMônToolStripMenuItem
             // 
             quảnLýMônToolStripMenuItem.Name = "quảnLýMônToolStripMenuItem";
-            quảnLýMônToolStripMenuItem.Size = new Size(200, 26);
+            quảnLýMônToolStripMenuItem.Size = new Size(232, 26);
             quảnLýMônToolStripMenuItem.Text = "Quản lý môn";
+            quảnLýMônToolStripMenuItem.Click += quảnLýMônToolStripMenuItem_Click;
             // 
             // qUaToolStripMenuItem
             // 
             qUaToolStripMenuItem.Name = "qUaToolStripMenuItem";
-            qUaToolStripMenuItem.Size = new Size(200, 26);
+            qUaToolStripMenuItem.Size = new Size(232, 26);
             qUaToolStripMenuItem.Text = "Quản lý điểm";
+            qUaToolStripMenuItem.Click += qUaToolStripMenuItem_Click;
+            // 
+            // quảnLýTàiKhoảnToolStripMenuItem
+            // 
+            quảnLýTàiKhoảnToolStripMenuItem.Name = "quảnLýTàiKhoảnToolStripMenuItem";
+            quảnLýTàiKhoảnToolStripMenuItem.Size = new Size(232, 26);
+            quảnLýTàiKhoảnToolStripMenuItem.Text = "Quản lý tài khoản";
+            quảnLýTàiKhoảnToolStripMenuItem.Click += quảnLýTàiKhoảnToolStripMenuItem_Click;
             // 
             // tàiKhoảnToolStripMenuItem
             // 
@@ -532,7 +543,7 @@
             Column10.MinimumWidth = 6;
             Column10.Name = "Column10";
             Column10.ReadOnly = true;
-            Column10.Width = 200;
+            Column10.Width = 300;
             // 
             // fHocSinh
             // 
@@ -571,16 +582,6 @@
         private Panel panel1;
         private Panel panel2;
         private DataGridView dgvHocSinh;
-        private DataGridViewTextBoxColumn Column1;
-        private DataGridViewTextBoxColumn Column2;
-        private DataGridViewTextBoxColumn Column3;
-        private DataGridViewTextBoxColumn Column4;
-        private DataGridViewTextBoxColumn Column7;
-        private DataGridViewTextBoxColumn Column5;
-        private DataGridViewTextBoxColumn Column6;
-        private DataGridViewTextBoxColumn Column8;
-        private DataGridViewTextBoxColumn Column9;
-        private DataGridViewTextBoxColumn Column10;
         private TextBox txtLopHoc;
         private Label label7;
         private TextBox txtDiaChi;
@@ -607,5 +608,16 @@
         private Button btnXoa;
         private Button btnSua;
         private Button btnThem;
+        private DataGridViewTextBoxColumn Column1;
+        private DataGridViewTextBoxColumn Column2;
+        private DataGridViewTextBoxColumn Column3;
+        private DataGridViewTextBoxColumn Column4;
+        private DataGridViewTextBoxColumn Column7;
+        private DataGridViewTextBoxColumn Column5;
+        private DataGridViewTextBoxColumn Column6;
+        private DataGridViewTextBoxColumn Column8;
+        private DataGridViewTextBoxColumn Column9;
+        private DataGridViewTextBoxColumn Column10;
+        private ToolStripMenuItem quảnLýTàiKhoảnToolStripMenuItem;
     }
 }
