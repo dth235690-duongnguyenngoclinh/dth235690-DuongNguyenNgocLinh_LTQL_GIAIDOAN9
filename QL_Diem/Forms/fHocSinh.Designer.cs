@@ -59,24 +59,24 @@
             label5 = new Label();
             txtGiaoVien = new TextBox();
             label4 = new Label();
-            TXTHoTen = new TextBox();
+            txtTHoTen = new TextBox();
             label3 = new Label();
-            TXTMaHocSinh = new TextBox();
+            txtMaHocSinh = new TextBox();
             label2 = new Label();
             txtID = new TextBox();
             label1 = new Label();
             panel2 = new Panel();
             dgvHocSinh = new DataGridView();
-            Column1 = new DataGridViewTextBoxColumn();
-            Column2 = new DataGridViewTextBoxColumn();
-            Column3 = new DataGridViewTextBoxColumn();
-            Column4 = new DataGridViewTextBoxColumn();
-            Column7 = new DataGridViewTextBoxColumn();
-            Column5 = new DataGridViewTextBoxColumn();
-            Column6 = new DataGridViewTextBoxColumn();
-            Column8 = new DataGridViewTextBoxColumn();
-            Column9 = new DataGridViewTextBoxColumn();
-            Column10 = new DataGridViewTextBoxColumn();
+            ID = new DataGridViewTextBoxColumn();
+            MaHocSinh = new DataGridViewTextBoxColumn();
+            TenHocSinh = new DataGridViewTextBoxColumn();
+            GioiTinh = new DataGridViewTextBoxColumn();
+            LopHoc = new DataGridViewTextBoxColumn();
+            NgaySinh = new DataGridViewTextBoxColumn();
+            DiaChi = new DataGridViewTextBoxColumn();
+            NamHoc = new DataGridViewTextBoxColumn();
+            SoDienThoaiPhuHuynh = new DataGridViewTextBoxColumn();
+            GiaoVien = new DataGridViewTextBoxColumn();
             menuStrip1.SuspendLayout();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
@@ -176,9 +176,9 @@
             panel1.Controls.Add(label5);
             panel1.Controls.Add(txtGiaoVien);
             panel1.Controls.Add(label4);
-            panel1.Controls.Add(TXTHoTen);
+            panel1.Controls.Add(txtTHoTen);
             panel1.Controls.Add(label3);
-            panel1.Controls.Add(TXTMaHocSinh);
+            panel1.Controls.Add(txtMaHocSinh);
             panel1.Controls.Add(label2);
             panel1.Controls.Add(txtID);
             panel1.Controls.Add(label1);
@@ -197,6 +197,7 @@
             button1.TabIndex = 14;
             button1.Text = "Thoát";
             button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
             // btnLamMoi
             // 
@@ -207,6 +208,7 @@
             btnLamMoi.TabIndex = 15;
             btnLamMoi.Text = "Làm mới";
             btnLamMoi.UseVisualStyleBackColor = true;
+            btnLamMoi.Click += btnLamMoi_Click;
             // 
             // btnXoa
             // 
@@ -217,6 +219,7 @@
             btnXoa.TabIndex = 13;
             btnXoa.Text = "Xóa";
             btnXoa.UseVisualStyleBackColor = true;
+            btnXoa.Click += btnXoa_Click;
             // 
             // btnSua
             // 
@@ -227,6 +230,7 @@
             btnSua.TabIndex = 12;
             btnSua.Text = "Sửa";
             btnSua.UseVisualStyleBackColor = true;
+            btnSua.Click += btnSua_Click;
             // 
             // btnThem
             // 
@@ -237,6 +241,7 @@
             btnThem.TabIndex = 11;
             btnThem.Text = "Thêm";
             btnThem.UseVisualStyleBackColor = true;
+            btnThem.Click += btnThem_Click;
             // 
             // dtpkNamHoc
             // 
@@ -382,13 +387,13 @@
             label4.TabIndex = 6;
             label4.Text = "GIÁO VIÊN:";
             // 
-            // TXTHoTen
+            // txtTHoTen
             // 
-            TXTHoTen.Font = new Font("Times New Roman", 10.2F);
-            TXTHoTen.Location = new Point(347, 16);
-            TXTHoTen.Name = "TXTHoTen";
-            TXTHoTen.Size = new Size(282, 27);
-            TXTHoTen.TabIndex = 2;
+            txtTHoTen.Font = new Font("Times New Roman", 10.2F);
+            txtTHoTen.Location = new Point(347, 16);
+            txtTHoTen.Name = "txtTHoTen";
+            txtTHoTen.Size = new Size(282, 27);
+            txtTHoTen.TabIndex = 2;
             // 
             // label3
             // 
@@ -400,13 +405,13 @@
             label3.TabIndex = 4;
             label3.Text = "TÊN HS:";
             // 
-            // TXTMaHocSinh
+            // txtMaHocSinh
             // 
-            TXTMaHocSinh.Font = new Font("Times New Roman", 10.2F);
-            TXTMaHocSinh.Location = new Point(176, 16);
-            TXTMaHocSinh.Name = "TXTMaHocSinh";
-            TXTMaHocSinh.Size = new Size(96, 27);
-            TXTMaHocSinh.TabIndex = 1;
+            txtMaHocSinh.Font = new Font("Times New Roman", 10.2F);
+            txtMaHocSinh.Location = new Point(176, 16);
+            txtMaHocSinh.Name = "txtMaHocSinh";
+            txtMaHocSinh.Size = new Size(96, 27);
+            txtMaHocSinh.TabIndex = 1;
             // 
             // label2
             // 
@@ -451,7 +456,7 @@
             dgvHocSinh.AllowUserToAddRows = false;
             dgvHocSinh.AllowUserToDeleteRows = false;
             dgvHocSinh.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvHocSinh.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column7, Column5, Column6, Column8, Column9, Column10 });
+            dgvHocSinh.Columns.AddRange(new DataGridViewColumn[] { ID, MaHocSinh, TenHocSinh, GioiTinh, LopHoc, NgaySinh, DiaChi, NamHoc, SoDienThoaiPhuHuynh, GiaoVien });
             dgvHocSinh.Dock = DockStyle.Fill;
             dgvHocSinh.Location = new Point(0, 0);
             dgvHocSinh.MultiSelect = false;
@@ -465,85 +470,95 @@
             dgvHocSinh.TabIndex = 0;
             dgvHocSinh.TabStop = false;
             // 
-            // Column1
+            // ID
             // 
-            Column1.HeaderText = "ID";
-            Column1.MinimumWidth = 6;
-            Column1.Name = "Column1";
-            Column1.ReadOnly = true;
-            Column1.Width = 75;
+            ID.DataPropertyName = "ID";
+            ID.HeaderText = "ID";
+            ID.MinimumWidth = 6;
+            ID.Name = "ID";
+            ID.ReadOnly = true;
+            ID.Width = 75;
             // 
-            // Column2
+            // MaHocSinh
             // 
-            Column2.HeaderText = "MÃ HỌC SINH";
-            Column2.MinimumWidth = 6;
-            Column2.Name = "Column2";
-            Column2.ReadOnly = true;
-            Column2.Width = 150;
+            MaHocSinh.DataPropertyName = "MaHocSinh";
+            MaHocSinh.HeaderText = "MÃ HỌC SINH";
+            MaHocSinh.MinimumWidth = 6;
+            MaHocSinh.Name = "MaHocSinh";
+            MaHocSinh.ReadOnly = true;
+            MaHocSinh.Width = 150;
             // 
-            // Column3
+            // TenHocSinh
             // 
-            Column3.HeaderText = "TÊN HỌC SINH";
-            Column3.MinimumWidth = 6;
-            Column3.Name = "Column3";
-            Column3.ReadOnly = true;
-            Column3.Width = 250;
+            TenHocSinh.DataPropertyName = "TenHocSinh";
+            TenHocSinh.HeaderText = "TÊN HỌC SINH";
+            TenHocSinh.MinimumWidth = 6;
+            TenHocSinh.Name = "TenHocSinh";
+            TenHocSinh.ReadOnly = true;
+            TenHocSinh.Width = 250;
             // 
-            // Column4
+            // GioiTinh
             // 
-            Column4.HeaderText = "GIỚI TÍNH";
-            Column4.MinimumWidth = 6;
-            Column4.Name = "Column4";
-            Column4.ReadOnly = true;
-            Column4.Width = 125;
+            GioiTinh.DataPropertyName = "GioiTinh";
+            GioiTinh.HeaderText = "GIỚI TÍNH";
+            GioiTinh.MinimumWidth = 6;
+            GioiTinh.Name = "GioiTinh";
+            GioiTinh.ReadOnly = true;
+            GioiTinh.Width = 125;
             // 
-            // Column7
+            // LopHoc
             // 
-            Column7.HeaderText = "LỚP";
-            Column7.MinimumWidth = 6;
-            Column7.Name = "Column7";
-            Column7.ReadOnly = true;
-            Column7.Width = 125;
+            LopHoc.DataPropertyName = "LopHoc";
+            LopHoc.HeaderText = "LỚP";
+            LopHoc.MinimumWidth = 6;
+            LopHoc.Name = "LopHoc";
+            LopHoc.ReadOnly = true;
+            LopHoc.Width = 125;
             // 
-            // Column5
+            // NgaySinh
             // 
-            Column5.HeaderText = "NGÀY SINH";
-            Column5.MinimumWidth = 6;
-            Column5.Name = "Column5";
-            Column5.ReadOnly = true;
-            Column5.Width = 170;
+            NgaySinh.DataPropertyName = "NgaySinh";
+            NgaySinh.HeaderText = "NGÀY SINH";
+            NgaySinh.MinimumWidth = 6;
+            NgaySinh.Name = "NgaySinh";
+            NgaySinh.ReadOnly = true;
+            NgaySinh.Width = 170;
             // 
-            // Column6
+            // DiaChi
             // 
-            Column6.HeaderText = "ĐỊA CHỈ";
-            Column6.MinimumWidth = 6;
-            Column6.Name = "Column6";
-            Column6.ReadOnly = true;
-            Column6.Width = 400;
+            DiaChi.DataPropertyName = "DiaChi";
+            DiaChi.HeaderText = "ĐỊA CHỈ";
+            DiaChi.MinimumWidth = 6;
+            DiaChi.Name = "DiaChi";
+            DiaChi.ReadOnly = true;
+            DiaChi.Width = 400;
             // 
-            // Column8
+            // NamHoc
             // 
-            Column8.HeaderText = "NĂM HỌC";
-            Column8.MinimumWidth = 6;
-            Column8.Name = "Column8";
-            Column8.ReadOnly = true;
-            Column8.Width = 170;
+            NamHoc.DataPropertyName = "NamHoc";
+            NamHoc.HeaderText = "NĂM HỌC";
+            NamHoc.MinimumWidth = 6;
+            NamHoc.Name = "NamHoc";
+            NamHoc.ReadOnly = true;
+            NamHoc.Width = 170;
             // 
-            // Column9
+            // SoDienThoaiPhuHuynh
             // 
-            Column9.HeaderText = "SĐT PHỤ HUYNH";
-            Column9.MinimumWidth = 6;
-            Column9.Name = "Column9";
-            Column9.ReadOnly = true;
-            Column9.Width = 200;
+            SoDienThoaiPhuHuynh.DataPropertyName = "SoDienThoaiPhuHuynh";
+            SoDienThoaiPhuHuynh.HeaderText = "SĐT PHỤ HUYNH";
+            SoDienThoaiPhuHuynh.MinimumWidth = 6;
+            SoDienThoaiPhuHuynh.Name = "SoDienThoaiPhuHuynh";
+            SoDienThoaiPhuHuynh.ReadOnly = true;
+            SoDienThoaiPhuHuynh.Width = 200;
             // 
-            // Column10
+            // GiaoVien
             // 
-            Column10.HeaderText = "GIÁO VIÊN CHỦ NHIỆM";
-            Column10.MinimumWidth = 6;
-            Column10.Name = "Column10";
-            Column10.ReadOnly = true;
-            Column10.Width = 300;
+            GiaoVien.DataPropertyName = "GiaoVien";
+            GiaoVien.HeaderText = "GIÁO VIÊN CHỦ NHIỆM";
+            GiaoVien.MinimumWidth = 6;
+            GiaoVien.Name = "GiaoVien";
+            GiaoVien.ReadOnly = true;
+            GiaoVien.Width = 300;
             // 
             // fHocSinh
             // 
@@ -558,6 +573,7 @@
             Name = "fHocSinh";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "fHocSinh";
+            Load += fHocSinh_Load;
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
             panel1.ResumeLayout(false);
@@ -590,9 +606,9 @@
         private Label label5;
         private TextBox txtGiaoVien;
         private Label label4;
-        private TextBox TXTHoTen;
+        private TextBox txtTHoTen;
         private Label label3;
-        private TextBox TXTMaHocSinh;
+        private TextBox txtMaHocSinh;
         private Label label2;
         private TextBox txtID;
         private Label label1;
@@ -608,16 +624,16 @@
         private Button btnXoa;
         private Button btnSua;
         private Button btnThem;
-        private DataGridViewTextBoxColumn Column1;
-        private DataGridViewTextBoxColumn Column2;
-        private DataGridViewTextBoxColumn Column3;
-        private DataGridViewTextBoxColumn Column4;
-        private DataGridViewTextBoxColumn Column7;
-        private DataGridViewTextBoxColumn Column5;
-        private DataGridViewTextBoxColumn Column6;
-        private DataGridViewTextBoxColumn Column8;
-        private DataGridViewTextBoxColumn Column9;
-        private DataGridViewTextBoxColumn Column10;
         private ToolStripMenuItem quảnLýTàiKhoảnToolStripMenuItem;
+        private DataGridViewTextBoxColumn ID;
+        private DataGridViewTextBoxColumn MaHocSinh;
+        private DataGridViewTextBoxColumn TenHocSinh;
+        private DataGridViewTextBoxColumn GioiTinh;
+        private DataGridViewTextBoxColumn LopHoc;
+        private DataGridViewTextBoxColumn NgaySinh;
+        private DataGridViewTextBoxColumn DiaChi;
+        private DataGridViewTextBoxColumn NamHoc;
+        private DataGridViewTextBoxColumn SoDienThoaiPhuHuynh;
+        private DataGridViewTextBoxColumn GiaoVien;
     }
 }

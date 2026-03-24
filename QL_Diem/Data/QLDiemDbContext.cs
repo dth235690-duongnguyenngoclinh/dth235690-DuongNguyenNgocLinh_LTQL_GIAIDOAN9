@@ -10,6 +10,7 @@ namespace QL_DiemTruongTieuHoc.Data
         public DbSet<Lop> LopHocs { get; set; }
         public DbSet<MonHoc> MonHoc { get; set; }
         public DbSet<BangDiem> BangDiems { get; set; }
+        public DbSet<TaiKhoan> TaiKhoans { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {// Lấy chuỗi kết nối từ file App.config [cite: 236, 238]
             optionsBuilder.UseSqlServer(ConfigurationManager.ConnectionStrings["QLDiemConnection"].ConnectionString);

@@ -29,7 +29,9 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
-            button1 = new Button();
+            cmbLoaiTaiKhoan = new ComboBox();
+            label4 = new Label();
+            btnThoat = new Button();
             btnLamMoi = new Button();
             btnXoa = new Button();
             btnSua = new Button();
@@ -42,10 +44,11 @@
             label1 = new Label();
             panel2 = new Panel();
             dgvTaiKhoan = new DataGridView();
-            Column1 = new DataGridViewTextBoxColumn();
-            Column2 = new DataGridViewTextBoxColumn();
-            Column3 = new DataGridViewTextBoxColumn();
-            Column9 = new DataGridViewTextBoxColumn();
+            ID = new DataGridViewTextBoxColumn();
+            TenDangNhap = new DataGridViewTextBoxColumn();
+            MatKhau = new DataGridViewTextBoxColumn();
+            LoaiTaiKhoan = new DataGridViewTextBoxColumn();
+            btnO = new Button();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvTaiKhoan).BeginInit();
@@ -53,7 +56,10 @@
             // 
             // panel1
             // 
-            panel1.Controls.Add(button1);
+            panel1.Controls.Add(btnO);
+            panel1.Controls.Add(cmbLoaiTaiKhoan);
+            panel1.Controls.Add(label4);
+            panel1.Controls.Add(btnThoat);
             panel1.Controls.Add(btnLamMoi);
             panel1.Controls.Add(btnXoa);
             panel1.Controls.Add(btnSua);
@@ -71,55 +77,80 @@
             panel1.Size = new Size(645, 119);
             panel1.TabIndex = 0;
             // 
-            // button1
+            // cmbLoaiTaiKhoan
             // 
-            button1.Font = new Font("Times New Roman", 10.2F);
-            button1.Location = new Point(376, 71);
-            button1.Name = "button1";
-            button1.Size = new Size(74, 32);
-            button1.TabIndex = 6;
-            button1.Text = "Thoát";
-            button1.UseVisualStyleBackColor = true;
+            cmbLoaiTaiKhoan.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbLoaiTaiKhoan.FormattingEnabled = true;
+            cmbLoaiTaiKhoan.Items.AddRange(new object[] { "Admin", "Giáo Viên" });
+            cmbLoaiTaiKhoan.Location = new Point(88, 76);
+            cmbLoaiTaiKhoan.Name = "cmbLoaiTaiKhoan";
+            cmbLoaiTaiKhoan.Size = new Size(88, 27);
+            cmbLoaiTaiKhoan.TabIndex = 3;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(4, 79);
+            label4.Margin = new Padding(4, 0, 4, 0);
+            label4.Name = "label4";
+            label4.Size = new Size(77, 19);
+            label4.TabIndex = 8;
+            label4.Text = "LOẠI TK:";
+            // 
+            // btnThoat
+            // 
+            btnThoat.Font = new Font("Times New Roman", 10.2F);
+            btnThoat.Location = new Point(465, 72);
+            btnThoat.Name = "btnThoat";
+            btnThoat.Size = new Size(74, 32);
+            btnThoat.TabIndex = 7;
+            btnThoat.Text = "Thoát";
+            btnThoat.UseVisualStyleBackColor = true;
+            btnThoat.Click += btnThoat_Click;
             // 
             // btnLamMoi
             // 
             btnLamMoi.Font = new Font("Times New Roman", 10.2F);
-            btnLamMoi.Location = new Point(469, 71);
+            btnLamMoi.Location = new Point(545, 72);
             btnLamMoi.Name = "btnLamMoi";
             btnLamMoi.Size = new Size(86, 32);
-            btnLamMoi.TabIndex = 7;
+            btnLamMoi.TabIndex = 8;
             btnLamMoi.Text = "Làm mới";
             btnLamMoi.UseVisualStyleBackColor = true;
+            btnLamMoi.Click += btnLamMoi_Click;
             // 
             // btnXoa
             // 
             btnXoa.Font = new Font("Times New Roman", 10.2F);
-            btnXoa.Location = new Point(285, 71);
+            btnXoa.Location = new Point(385, 72);
             btnXoa.Name = "btnXoa";
             btnXoa.Size = new Size(74, 32);
-            btnXoa.TabIndex = 5;
+            btnXoa.TabIndex = 6;
             btnXoa.Text = "Xóa";
             btnXoa.UseVisualStyleBackColor = true;
+            btnXoa.Click += btnXoa_Click;
             // 
             // btnSua
             // 
             btnSua.Font = new Font("Times New Roman", 10.2F);
-            btnSua.Location = new Point(190, 71);
+            btnSua.Location = new Point(305, 72);
             btnSua.Name = "btnSua";
             btnSua.Size = new Size(74, 32);
-            btnSua.TabIndex = 4;
+            btnSua.TabIndex = 5;
             btnSua.Text = "Sửa";
             btnSua.UseVisualStyleBackColor = true;
+            btnSua.Click += btnSua_Click;
             // 
             // btnThem
             // 
             btnThem.Font = new Font("Times New Roman", 10.2F);
-            btnThem.Location = new Point(96, 71);
+            btnThem.Location = new Point(225, 72);
             btnThem.Name = "btnThem";
             btnThem.Size = new Size(74, 32);
-            btnThem.TabIndex = 3;
+            btnThem.TabIndex = 4;
             btnThem.Text = "Thêm";
             btnThem.UseVisualStyleBackColor = true;
+            btnThem.Click += btnThem_Click_1;
             // 
             // txtMatKhau
             // 
@@ -188,7 +219,7 @@
             dgvTaiKhoan.AllowUserToAddRows = false;
             dgvTaiKhoan.AllowUserToDeleteRows = false;
             dgvTaiKhoan.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvTaiKhoan.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Column3, Column9 });
+            dgvTaiKhoan.Columns.AddRange(new DataGridViewColumn[] { ID, TenDangNhap, MatKhau, LoaiTaiKhoan });
             dgvTaiKhoan.Dock = DockStyle.Fill;
             dgvTaiKhoan.Location = new Point(0, 0);
             dgvTaiKhoan.Margin = new Padding(4);
@@ -202,38 +233,53 @@
             dgvTaiKhoan.Size = new Size(645, 371);
             dgvTaiKhoan.TabIndex = 1;
             dgvTaiKhoan.TabStop = false;
+            dgvTaiKhoan.CellClick += dgvTaiKhoan_CellClick;
             // 
-            // Column1
+            // ID
             // 
-            Column1.HeaderText = "ID";
-            Column1.MinimumWidth = 6;
-            Column1.Name = "Column1";
-            Column1.ReadOnly = true;
-            Column1.Width = 75;
+            ID.DataPropertyName = "ID";
+            ID.HeaderText = "ID";
+            ID.MinimumWidth = 6;
+            ID.Name = "ID";
+            ID.ReadOnly = true;
+            ID.Width = 75;
             // 
-            // Column2
+            // TenDangNhap
             // 
-            Column2.HeaderText = "TÊN ĐĂNG NHẬP";
-            Column2.MinimumWidth = 6;
-            Column2.Name = "Column2";
-            Column2.ReadOnly = true;
-            Column2.Width = 250;
+            TenDangNhap.DataPropertyName = "TenDangNhap";
+            TenDangNhap.HeaderText = "TÊN ĐĂNG NHẬP";
+            TenDangNhap.MinimumWidth = 6;
+            TenDangNhap.Name = "TenDangNhap";
+            TenDangNhap.ReadOnly = true;
+            TenDangNhap.Width = 250;
             // 
-            // Column3
+            // MatKhau
             // 
-            Column3.HeaderText = "MẬT KHẨU";
-            Column3.MinimumWidth = 6;
-            Column3.Name = "Column3";
-            Column3.ReadOnly = true;
-            Column3.Width = 150;
+            MatKhau.DataPropertyName = "MatKhau";
+            MatKhau.HeaderText = "MẬT KHẨU";
+            MatKhau.MinimumWidth = 6;
+            MatKhau.Name = "MatKhau";
+            MatKhau.ReadOnly = true;
+            MatKhau.Width = 150;
             // 
-            // Column9
+            // LoaiTaiKhoan
             // 
-            Column9.HeaderText = "LOẠI TÀI KHOẢN";
-            Column9.MinimumWidth = 6;
-            Column9.Name = "Column9";
-            Column9.ReadOnly = true;
-            Column9.Width = 200;
+            LoaiTaiKhoan.DataPropertyName = "LoaiTaiKhoan";
+            LoaiTaiKhoan.HeaderText = "LOẠI TÀI KHOẢN";
+            LoaiTaiKhoan.MinimumWidth = 6;
+            LoaiTaiKhoan.Name = "LoaiTaiKhoan";
+            LoaiTaiKhoan.ReadOnly = true;
+            LoaiTaiKhoan.Width = 200;
+            // 
+            // btnO
+            // 
+            btnO.Location = new Point(184, 77);
+            btnO.Name = "btnO";
+            btnO.Size = new Size(35, 27);
+            btnO.TabIndex = 9;
+            btnO.Text = "O";
+            btnO.UseVisualStyleBackColor = true;
+            btnO.Click += btnO_Click;
             // 
             // fTaiKhoan
             // 
@@ -247,6 +293,7 @@
             Name = "fTaiKhoan";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "fTaiKhoan";
+            Load += fTaiKhoan_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             panel2.ResumeLayout(false);
@@ -265,14 +312,17 @@
         private Label label3;
         private TextBox txtTenDangNhap;
         private Label label2;
-        private Button button1;
+        private Button btnThoat;
         private Button btnLamMoi;
         private Button btnXoa;
         private Button btnSua;
         private Button btnThem;
-        private DataGridViewTextBoxColumn Column1;
-        private DataGridViewTextBoxColumn Column2;
-        private DataGridViewTextBoxColumn Column3;
-        private DataGridViewTextBoxColumn Column9;
+        private ComboBox cmbLoaiTaiKhoan;
+        private Label label4;
+        private DataGridViewTextBoxColumn ID;
+        private DataGridViewTextBoxColumn TenDangNhap;
+        private DataGridViewTextBoxColumn MatKhau;
+        private DataGridViewTextBoxColumn LoaiTaiKhoan;
+        private Button btnO;
     }
 }

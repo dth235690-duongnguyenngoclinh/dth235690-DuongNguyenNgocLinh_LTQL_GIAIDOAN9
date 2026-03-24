@@ -29,28 +29,31 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
+            dtpkNamHoc = new DateTimePicker();
+            label6 = new Label();
             cmbGVCN = new ComboBox();
             label5 = new Label();
             numSoLuong = new NumericUpDown();
             label4 = new Label();
-            button1 = new Button();
+            btnThoat = new Button();
             btnLamMoi = new Button();
             btnXoa = new Button();
             btnSua = new Button();
             btnThem = new Button();
-            txtMatKhau = new TextBox();
+            txtTenLop = new TextBox();
             label3 = new Label();
-            txtTenDangNhap = new TextBox();
+            txtMaLop = new TextBox();
             label2 = new Label();
             txtID = new TextBox();
             label1 = new Label();
             panel2 = new Panel();
             dgvLop = new DataGridView();
-            Column1 = new DataGridViewTextBoxColumn();
-            Column2 = new DataGridViewTextBoxColumn();
-            Column3 = new DataGridViewTextBoxColumn();
-            Column9 = new DataGridViewTextBoxColumn();
-            Column4 = new DataGridViewTextBoxColumn();
+            ID = new DataGridViewTextBoxColumn();
+            MaLop = new DataGridViewTextBoxColumn();
+            TenLop = new DataGridViewTextBoxColumn();
+            GiaoVienChuNhiem = new DataGridViewTextBoxColumn();
+            SoLuong = new DataGridViewTextBoxColumn();
+            NamHoc = new DataGridViewTextBoxColumn();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)numSoLuong).BeginInit();
             panel2.SuspendLayout();
@@ -59,30 +62,51 @@
             // 
             // panel1
             // 
+            panel1.Controls.Add(dtpkNamHoc);
+            panel1.Controls.Add(label6);
             panel1.Controls.Add(cmbGVCN);
             panel1.Controls.Add(label5);
             panel1.Controls.Add(numSoLuong);
             panel1.Controls.Add(label4);
-            panel1.Controls.Add(button1);
+            panel1.Controls.Add(btnThoat);
             panel1.Controls.Add(btnLamMoi);
             panel1.Controls.Add(btnXoa);
             panel1.Controls.Add(btnSua);
             panel1.Controls.Add(btnThem);
-            panel1.Controls.Add(txtMatKhau);
+            panel1.Controls.Add(txtTenLop);
             panel1.Controls.Add(label3);
-            panel1.Controls.Add(txtTenDangNhap);
+            panel1.Controls.Add(txtMaLop);
             panel1.Controls.Add(label2);
             panel1.Controls.Add(txtID);
             panel1.Controls.Add(label1);
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(680, 125);
+            panel1.Size = new Size(680, 167);
             panel1.TabIndex = 0;
+            // 
+            // dtpkNamHoc
+            // 
+            dtpkNamHoc.Format = DateTimePickerFormat.Short;
+            dtpkNamHoc.Location = new Point(403, 77);
+            dtpkNamHoc.Name = "dtpkNamHoc";
+            dtpkNamHoc.Size = new Size(143, 27);
+            dtpkNamHoc.TabIndex = 24;
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Location = new Point(305, 81);
+            label6.Margin = new Padding(4, 0, 4, 0);
+            label6.Name = "label6";
+            label6.Size = new Size(91, 19);
+            label6.TabIndex = 23;
+            label6.Text = "NĂM HỌC:";
             // 
             // cmbGVCN
             // 
             cmbGVCN.FormattingEnabled = true;
+            cmbGVCN.Items.AddRange(new object[] { "Đặng Thanh Hiếu", "Bùi Ngọc Hoa", "Thanh Thanh Tăng", "Lương Kim Tuyền", "Huỳnh TRung Kiên", "Dương Ngọc Nga", "Thái Thanh Ngân", "Nguyễn Minh Ngọc", "Bùi Minh Kha" });
             cmbGVCN.Location = new Point(491, 32);
             cmbGVCN.Name = "cmbGVCN";
             cmbGVCN.Size = new Size(181, 27);
@@ -100,7 +124,7 @@
             // 
             // numSoLuong
             // 
-            numSoLuong.Location = new Point(131, 78);
+            numSoLuong.Location = new Point(204, 77);
             numSoLuong.Name = "numSoLuong";
             numSoLuong.Size = new Size(49, 27);
             numSoLuong.TabIndex = 4;
@@ -108,70 +132,75 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(26, 82);
+            label4.Location = new Point(99, 81);
             label4.Margin = new Padding(4, 0, 4, 0);
             label4.Name = "label4";
             label4.Size = new Size(98, 19);
             label4.TabIndex = 19;
             label4.Text = "SỐ LƯỢNG:";
             // 
-            // button1
+            // btnThoat
             // 
-            button1.Font = new Font("Times New Roman", 10.2F);
-            button1.Location = new Point(458, 76);
-            button1.Name = "button1";
-            button1.Size = new Size(74, 30);
-            button1.TabIndex = 8;
-            button1.Text = "Thoát";
-            button1.UseVisualStyleBackColor = true;
+            btnThoat.Font = new Font("Times New Roman", 10.2F);
+            btnThoat.Location = new Point(358, 121);
+            btnThoat.Name = "btnThoat";
+            btnThoat.Size = new Size(74, 30);
+            btnThoat.TabIndex = 8;
+            btnThoat.Text = "Thoát";
+            btnThoat.UseVisualStyleBackColor = true;
+            btnThoat.Click += btnThoat_Click;
             // 
             // btnLamMoi
             // 
             btnLamMoi.Font = new Font("Times New Roman", 10.2F);
-            btnLamMoi.Location = new Point(538, 76);
+            btnLamMoi.Location = new Point(438, 121);
             btnLamMoi.Name = "btnLamMoi";
             btnLamMoi.Size = new Size(86, 30);
             btnLamMoi.TabIndex = 9;
             btnLamMoi.Text = "Làm mới";
             btnLamMoi.UseVisualStyleBackColor = true;
+            btnLamMoi.Click += btnLamMoi_Click;
             // 
             // btnXoa
             // 
             btnXoa.Font = new Font("Times New Roman", 10.2F);
-            btnXoa.Location = new Point(378, 76);
+            btnXoa.Location = new Point(278, 121);
             btnXoa.Name = "btnXoa";
             btnXoa.Size = new Size(74, 30);
             btnXoa.TabIndex = 7;
             btnXoa.Text = "Xóa";
             btnXoa.UseVisualStyleBackColor = true;
+            btnXoa.Click += btnXoa_Click;
             // 
             // btnSua
             // 
             btnSua.Font = new Font("Times New Roman", 10.2F);
-            btnSua.Location = new Point(298, 76);
+            btnSua.Location = new Point(198, 121);
             btnSua.Name = "btnSua";
             btnSua.Size = new Size(74, 30);
             btnSua.TabIndex = 6;
             btnSua.Text = "Sửa";
             btnSua.UseVisualStyleBackColor = true;
+            btnSua.Click += btnSua_Click;
             // 
             // btnThem
             // 
             btnThem.Font = new Font("Times New Roman", 10.2F);
-            btnThem.Location = new Point(218, 76);
+            btnThem.Location = new Point(118, 121);
             btnThem.Name = "btnThem";
             btnThem.Size = new Size(74, 30);
             btnThem.TabIndex = 5;
             btnThem.Text = "Thêm";
             btnThem.UseVisualStyleBackColor = true;
+            btnThem.Click += btnThem_Click;
             // 
-            // txtMatKhau
+            // txtTenLop
             // 
-            txtMatKhau.Location = new Point(349, 32);
-            txtMatKhau.MaxLength = 255;
-            txtMatKhau.Name = "txtMatKhau";
-            txtMatKhau.Size = new Size(74, 27);
-            txtMatKhau.TabIndex = 2;
+            txtTenLop.Location = new Point(349, 32);
+            txtTenLop.MaxLength = 255;
+            txtTenLop.Name = "txtTenLop";
+            txtTenLop.Size = new Size(74, 27);
+            txtTenLop.TabIndex = 2;
             // 
             // label3
             // 
@@ -183,13 +212,13 @@
             label3.TabIndex = 15;
             label3.Text = "TÊN LỚP:";
             // 
-            // txtTenDangNhap
+            // txtMaLop
             // 
-            txtTenDangNhap.Location = new Point(178, 32);
-            txtTenDangNhap.MaxLength = 255;
-            txtTenDangNhap.Name = "txtTenDangNhap";
-            txtTenDangNhap.Size = new Size(76, 27);
-            txtTenDangNhap.TabIndex = 1;
+            txtMaLop.Location = new Point(178, 32);
+            txtMaLop.MaxLength = 255;
+            txtMaLop.Name = "txtMaLop";
+            txtMaLop.Size = new Size(76, 27);
+            txtMaLop.TabIndex = 1;
             // 
             // label2
             // 
@@ -223,9 +252,9 @@
             // 
             panel2.Controls.Add(dgvLop);
             panel2.Dock = DockStyle.Fill;
-            panel2.Location = new Point(0, 125);
+            panel2.Location = new Point(0, 167);
             panel2.Name = "panel2";
-            panel2.Size = new Size(680, 371);
+            panel2.Size = new Size(680, 329);
             panel2.TabIndex = 1;
             // 
             // dgvLop
@@ -233,7 +262,7 @@
             dgvLop.AllowUserToAddRows = false;
             dgvLop.AllowUserToDeleteRows = false;
             dgvLop.ColumnHeadersHeight = 29;
-            dgvLop.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Column3, Column9, Column4 });
+            dgvLop.Columns.AddRange(new DataGridViewColumn[] { ID, MaLop, TenLop, GiaoVienChuNhiem, SoLuong, NamHoc });
             dgvLop.Dock = DockStyle.Fill;
             dgvLop.Location = new Point(0, 0);
             dgvLop.Margin = new Padding(4);
@@ -244,49 +273,63 @@
             dgvLop.RowHeadersWidth = 51;
             dgvLop.RowTemplate.Height = 30;
             dgvLop.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvLop.Size = new Size(680, 371);
+            dgvLop.Size = new Size(680, 329);
             dgvLop.TabIndex = 2;
             dgvLop.TabStop = false;
             // 
-            // Column1
+            // ID
             // 
-            Column1.HeaderText = "ID";
-            Column1.MinimumWidth = 6;
-            Column1.Name = "Column1";
-            Column1.ReadOnly = true;
-            Column1.Width = 75;
+            ID.DataPropertyName = "ID";
+            ID.HeaderText = "ID";
+            ID.MinimumWidth = 6;
+            ID.Name = "ID";
+            ID.ReadOnly = true;
+            ID.Width = 75;
             // 
-            // Column2
+            // MaLop
             // 
-            Column2.HeaderText = "MÃ LỚP";
-            Column2.MinimumWidth = 6;
-            Column2.Name = "Column2";
-            Column2.ReadOnly = true;
-            Column2.Width = 140;
+            MaLop.DataPropertyName = "MaLop";
+            MaLop.HeaderText = "MÃ LỚP";
+            MaLop.MinimumWidth = 6;
+            MaLop.Name = "MaLop";
+            MaLop.ReadOnly = true;
+            MaLop.Width = 140;
             // 
-            // Column3
+            // TenLop
             // 
-            Column3.HeaderText = "TÊN LỚP";
-            Column3.MinimumWidth = 6;
-            Column3.Name = "Column3";
-            Column3.ReadOnly = true;
-            Column3.Width = 130;
+            TenLop.DataPropertyName = "TenLop";
+            TenLop.HeaderText = "TÊN LỚP";
+            TenLop.MinimumWidth = 6;
+            TenLop.Name = "TenLop";
+            TenLop.ReadOnly = true;
+            TenLop.Width = 130;
             // 
-            // Column9
+            // GiaoVienChuNhiem
             // 
-            Column9.HeaderText = "GIÁO VIÊN CHỦ NHIỆM";
-            Column9.MinimumWidth = 6;
-            Column9.Name = "Column9";
-            Column9.ReadOnly = true;
-            Column9.Width = 400;
+            GiaoVienChuNhiem.DataPropertyName = "GiaoVienChuNhiem";
+            GiaoVienChuNhiem.HeaderText = "GIÁO VIÊN CHỦ NHIỆM";
+            GiaoVienChuNhiem.MinimumWidth = 6;
+            GiaoVienChuNhiem.Name = "GiaoVienChuNhiem";
+            GiaoVienChuNhiem.ReadOnly = true;
+            GiaoVienChuNhiem.Width = 400;
             // 
-            // Column4
+            // SoLuong
             // 
-            Column4.HeaderText = "SỐ LƯỢNG";
-            Column4.MinimumWidth = 6;
-            Column4.Name = "Column4";
-            Column4.ReadOnly = true;
-            Column4.Width = 130;
+            SoLuong.DataPropertyName = "SoLuong";
+            SoLuong.HeaderText = "SỐ LƯỢNG";
+            SoLuong.MinimumWidth = 6;
+            SoLuong.Name = "SoLuong";
+            SoLuong.ReadOnly = true;
+            SoLuong.Width = 130;
+            // 
+            // NamHoc
+            // 
+            NamHoc.DataPropertyName = "NamHoc";
+            NamHoc.HeaderText = "NĂM HỌC";
+            NamHoc.MinimumWidth = 6;
+            NamHoc.Name = "NamHoc";
+            NamHoc.ReadOnly = true;
+            NamHoc.Width = 150;
             // 
             // fLop
             // 
@@ -299,6 +342,7 @@
             Name = "fLop";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "fLop";
+            Load += fLop_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)numSoLuong).EndInit();
@@ -312,14 +356,14 @@
         private Panel panel1;
         private Panel panel2;
         private DataGridView dgvLop;
-        private Button button1;
+        private Button btnThoat;
         private Button btnLamMoi;
         private Button btnXoa;
         private Button btnSua;
         private Button btnThem;
-        private TextBox txtMatKhau;
+        private TextBox txtTenLop;
         private Label label3;
-        private TextBox txtTenDangNhap;
+        private TextBox txtMaLop;
         private Label label2;
         private TextBox txtID;
         private Label label1;
@@ -327,10 +371,13 @@
         private Label label4;
         private Label label5;
         private ComboBox cmbGVCN;
-        private DataGridViewTextBoxColumn Column1;
-        private DataGridViewTextBoxColumn Column2;
-        private DataGridViewTextBoxColumn Column3;
-        private DataGridViewTextBoxColumn Column9;
-        private DataGridViewTextBoxColumn Column4;
+        private Label label6;
+        private DateTimePicker dtpkNamHoc;
+        private DataGridViewTextBoxColumn ID;
+        private DataGridViewTextBoxColumn MaLop;
+        private DataGridViewTextBoxColumn TenLop;
+        private DataGridViewTextBoxColumn GiaoVienChuNhiem;
+        private DataGridViewTextBoxColumn SoLuong;
+        private DataGridViewTextBoxColumn NamHoc;
     }
 }
