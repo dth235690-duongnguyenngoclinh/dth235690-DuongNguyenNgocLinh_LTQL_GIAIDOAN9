@@ -45,6 +45,7 @@
             btnCapNhat.TabStop = false;
             btnCapNhat.Text = "Cập nhật";
             btnCapNhat.UseVisualStyleBackColor = true;
+            btnCapNhat.Click += btnCapNhat_Click;
             // 
             // txtMatKhau
             // 
