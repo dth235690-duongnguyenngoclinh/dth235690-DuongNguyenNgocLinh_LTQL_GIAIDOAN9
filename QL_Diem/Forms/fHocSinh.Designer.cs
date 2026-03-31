@@ -141,12 +141,14 @@
             thôngTinChiTiếtToolStripMenuItem.Name = "thôngTinChiTiếtToolStripMenuItem";
             thôngTinChiTiếtToolStripMenuItem.Size = new Size(227, 26);
             thôngTinChiTiếtToolStripMenuItem.Text = "Thông tin chi tiết";
+            thôngTinChiTiếtToolStripMenuItem.Click += thôngTinChiTiếtToolStripMenuItem_Click;
             // 
             // đổiMậtKhẩuToolStripMenuItem
             // 
             đổiMậtKhẩuToolStripMenuItem.Name = "đổiMậtKhẩuToolStripMenuItem";
             đổiMậtKhẩuToolStripMenuItem.Size = new Size(227, 26);
             đổiMậtKhẩuToolStripMenuItem.Text = "Đổi mật khẩu";
+            đổiMậtKhẩuToolStripMenuItem.Click += đổiMậtKhẩuToolStripMenuItem_Click;
             // 
             // đăngXuấtToolStripMenuItem
             // 

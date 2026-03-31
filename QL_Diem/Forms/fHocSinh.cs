@@ -199,5 +199,15 @@ namespace QL_Diem.Forms
                 else rdNu.Checked = true;
             }
         }
+
+        private void thôngTinChiTiếtToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new fThongTinChiTiet().ShowDialog();
+        }
+
+        private void đổiMậtKhẩuToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new fDoiMatKhau().ShowDialog();
+        }
     }
 }
