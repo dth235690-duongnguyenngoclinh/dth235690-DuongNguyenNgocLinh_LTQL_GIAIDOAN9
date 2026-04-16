@@ -1,4 +1,5 @@
-﻿using QL_Diem.Data;
+﻿using Microsoft.EntityFrameworkCore;
+using QL_Diem.Data;
 using QL_DiemTruongTieuHoc.Data;
 using System;
 using System.Collections.Generic;
@@ -29,7 +30,6 @@ namespace QL_Diem.Forms
             this._tenDN = tenDangNhap;
             this._loaiTK = loaiTaiKhoan; // Gán giá trị
         }
-
         private void quảnLýTàiKhoảnToolStripMenuItem_Click(object sender, EventArgs e)
         {
             fTaiKhoan f = new fTaiKhoan();
@@ -37,7 +37,6 @@ namespace QL_Diem.Forms
             f.ShowDialog();
             this.Show();
         }
-
         private void quảnLýLớpToolStripMenuItem_Click(object sender, EventArgs e)
         {
             fLop f = new fLop();
@@ -45,7 +44,6 @@ namespace QL_Diem.Forms
             f.ShowDialog();
             this.Show();
         }
-
         private void quảnLýMônToolStripMenuItem_Click(object sender, EventArgs e)
         {
             fMonHoc f = new fMonHoc();
@@ -53,7 +51,6 @@ namespace QL_Diem.Forms
             f.ShowDialog();
             this.Show();
         }
-
         private void qUaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             fQLDiem f = new fQLDiem();
@@ -73,52 +70,38 @@ namespace QL_Diem.Forms
             {
                 using (var db = new QLDiemDbContext())
                 {
-                    // Chúng ta dùng 'Select' để chỉ lấy những thông tin cần thiết 
-                    // y như cách em làm bên Form MonHoc
                     var data = db.HocSinhs.Select(h => new
                     {
                         h.ID,
-                        MaHocSinh = h.MaHocSinh,
-                        HoTen = h.HoTen,
-                        GioiTinh = h.GioiTinh,
-                        // Chỗ này quan trọng: Chỉ lấy TÊN LỚP, không lấy cả object Lop
+                        h.MaHocSinh,
+                        h.HoTen,
+                        h.GioiTinh,
                         TenLop = h.Lop != null ? h.Lop.TenLop : "Chưa xếp",
-                        NgaySinh = h.NgaySinh,
-                        DiaChi = h.DiaChi
+                        h.NgaySinh,
+                        h.DiaChi,
+                        h.NamHoc,
+                        h.SoDienThoaiPhuHuynh,
+                        h.GiaoVienChuNhiem,
+                        h.TrangThai
                     }).ToList();
+                    dgvHocSinh.AutoGenerateColumns = false;
 
                     dgvHocSinh.DataSource = data;
 
-                    // Đặt tên tiêu đề cột cho chuyên nghiệp
-                    if (dgvHocSinh.Columns.Count > 0)
-                    {
-                        dgvHocSinh.Columns["ID"].HeaderText = "ID";
-                        dgvHocSinh.Columns["MaHocSinh"].HeaderText = "MÃ HỌC SINH";
-                        dgvHocSinh.Columns["HoTen"].HeaderText = "TÊN HỌC SINH";
-                        dgvHocSinh.Columns["GioiTinh"].HeaderText = "GIỚI TÍNH";
-                        dgvHocSinh.Columns["TenLop"].HeaderText = "LỚP";
-                        dgvHocSinh.Columns["NgaySinh"].HeaderText = "NGÀY SINH";
-                        dgvHocSinh.Columns["DiaChi"].HeaderText = "ĐỊA CHỈ";
-
-                        // Tự động giãn cách các cột cho vừa khung hình (Y hệt Form MonHoc)
-                        dgvHocSinh.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-                    }
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Lỗi tải dữ liệu học sinh: " + ex.Message);
+                MessageBox.Show("Lỗi tải dữ liệu: " + ex.Message);
             }
         }
-
         private void btnThem_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtMaHocSinh.Text) || string.IsNullOrWhiteSpace(txtTHoTen.Text))
+            if (string.IsNullOrWhiteSpace(txtMaHocSinh.Text) || string.IsNullOrWhiteSpace(txtHoTen.Text))
             {
                 MessageBox.Show("Vui lòng nhập Mã và Tên học sinh!", "Thông báo");
                 return;
             }
-
             using (var db = new QLDiemDbContext())
             {
                 // Kiểm tra trùng mã
@@ -131,13 +114,15 @@ namespace QL_Diem.Forms
                 var hs = new HocSinh
                 {
                     MaHocSinh = txtMaHocSinh.Text.Trim(),
-                    HoTen = txtTHoTen.Text.Trim(),
+                    HoTen = txtHoTen.Text.Trim(),
                     NgaySinh = dtpkNgaySinh.Value,
                     GioiTinh = rdNam.Checked ? "Nam" : "Nữ",
                     DiaChi = txtDiaChi.Text.Trim(),
                     SoDienThoaiPhuHuynh = txtSoDienThoaiPhuHuynh.Text.Trim(),
-                    TrangThai = "Đang học",
-                    LopID = 1 // TẠM THỜI: Gán ID lớp là 1 để không bị lỗi khóa ngoại
+                    TrangThai = chbDangHoc.Checked ? "Đang học" : "Nghỉ học",
+                    LopID = 1,
+                    NamHoc = txtNamHoc.Text.Trim(), // thêm năm học
+                    GiaoVienChuNhiem = cmbGiaoVienChuNhiem.Text.Trim() // thêm GVCN
                 };
 
                 db.HocSinhs.Add(hs);
@@ -147,11 +132,9 @@ namespace QL_Diem.Forms
             btnLamMoi_Click(null, null);
             MessageBox.Show("Thêm thành công!");
         }
-
         private void btnSua_Click(object sender, EventArgs e)
         {
             if (dgvHocSinh.CurrentRow == null) return;
-
             int id = (int)dgvHocSinh.CurrentRow.Cells["ID"].Value;
             using (var db = new QLDiemDbContext())
             {
@@ -159,11 +142,15 @@ namespace QL_Diem.Forms
                 if (hs != null)
                 {
                     hs.MaHocSinh = txtMaHocSinh.Text.Trim();
-                    hs.HoTen = txtTHoTen.Text.Trim();
+                    hs.HoTen = txtHoTen.Text.Trim();
                     hs.NgaySinh = dtpkNgaySinh.Value;
                     hs.GioiTinh = rdNam.Checked ? "Nam" : "Nữ";
                     hs.DiaChi = txtDiaChi.Text.Trim();
                     hs.SoDienThoaiPhuHuynh = txtSoDienThoaiPhuHuynh.Text.Trim();
+                    hs.NamHoc = txtNamHoc.Text.Trim();
+                    hs.GiaoVienChuNhiem = cmbGiaoVienChuNhiem.Text.Trim();
+                    hs.TrangThai = chbDangHoc.Checked ? "Đang học" : "Nghỉ học";
+
 
                     db.SaveChanges();
                     LoadData();
@@ -171,7 +158,6 @@ namespace QL_Diem.Forms
                 }
             }
         }
-
         private void btnXoa_Click(object sender, EventArgs e)
         {
             if (dgvHocSinh.CurrentRow == null) return;
@@ -193,22 +179,26 @@ namespace QL_Diem.Forms
                 }
             }
         }
-
         private void button1_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-
         private void btnLamMoi_Click(object sender, EventArgs e)
         {
             txtID.Clear();
             txtMaHocSinh.Clear();
-            txtTHoTen.Clear();
+            txtHoTen.Clear();
             txtDiaChi.Clear();
             txtSoDienThoaiPhuHuynh.Clear();
             rdNam.Checked = true;
             dtpkNgaySinh.Value = DateTime.Now;
             txtMaHocSinh.Focus();
+            txtNamHoc.Clear();
+            cmbGiaoVienChuNhiem.SelectedIndex = -1; // hoặc cmbGiaoVienChuNhiem.Text = "";
+            chbDangHoc.Checked = true;   // mặc định đang học
+            chbNghiHoc.Checked = false;
+
+
         }
         // 5. Đổ dữ liệu lên TextBox khi click bảng
         private void dgvHocSinh_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -217,28 +207,28 @@ namespace QL_Diem.Forms
             {
                 var r = dgvHocSinh.CurrentRow;
 
-                // Lấy dữ liệu dựa theo tên cột mình đã đặt ở hàm LoadData
                 txtID.Text = r.Cells["ID"].Value?.ToString();
                 txtMaHocSinh.Text = r.Cells["MaHocSinh"].Value?.ToString();
-                txtTHoTen.Text = r.Cells["HoTen"].Value?.ToString();
+                txtHoTen.Text = r.Cells["HoTen"].Value?.ToString();
                 txtDiaChi.Text = r.Cells["DiaChi"].Value?.ToString();
-
-                // Xử lý RadioButton giới tính
+                txtSoDienThoaiPhuHuynh.Text = r.Cells["SoDienThoaiPhuHuynh"].Value?.ToString();
                 string gioiTinh = r.Cells["GioiTinh"].Value?.ToString();
                 if (gioiTinh == "Nam") rdNam.Checked = true;
                 else rdNu.Checked = true;
 
-                // Xử lý ngày sinh
                 if (r.Cells["NgaySinh"].Value != null)
                 {
                     dtpkNgaySinh.Value = Convert.ToDateTime(r.Cells["NgaySinh"].Value);
                 }
+                string trangThai = r.Cells["TrangThai"].Value?.ToString();
+                chbDangHoc.Checked = (trangThai == "Đang học");
+                chbNghiHoc.Checked = (trangThai == "Nghỉ học");
 
-                // Hiện tên lớp lên ComboBox hoặc TextBox lớp
-                txtLopHoc.Text = r.Cells["TenLop"].Value?.ToString();
+                txtTenLop.Text = r.Cells["TenLop"].Value?.ToString();
+                txtNamHoc.Text = r.Cells["NamHoc"].Value?.ToString();
+                cmbGiaoVienChuNhiem.Text = r.Cells["GiaoVienChuNhiem"].Value?.ToString();
             }
         }
-
         private void thôngTinChiTiếtToolStripMenuItem_Click(object sender, EventArgs e)
         {
             new fThongTinChiTiet(this._tenDN, this._loaiTK).ShowDialog();
@@ -249,7 +239,6 @@ namespace QL_Diem.Forms
             fDoiMatKhau f = new fDoiMatKhau(this._tenDN);
             f.ShowDialog();
         }
-
         private void đăngXuấtToolStripMenuItem_Click(object sender, EventArgs e)
         {
             // Hỏi xác nhận trước khi thoát cho chắc chắn
@@ -260,5 +249,40 @@ namespace QL_Diem.Forms
                 this.Close();
             }
         }
+        private void btnO_Click(object sender, EventArgs e)
+        {
+            var confirm = MessageBox.Show("CẢNH BÁO: Hành động này sẽ XÓA SẠCH toàn bộ lớp học và reset ID về 1. Bạn có chắc chắn không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+            if (confirm == DialogResult.Yes)
+            {
+                try
+                {
+                    using (var db = new QLDiemDbContext())
+                    {
+                        // 1. Xóa sạch dữ liệu trong bảng 
+                        db.Database.ExecuteSqlRaw("DELETE FROM HocSinh");
+                        // 2. Lệnh reset ID (Identity) của bảng LopHocs quay về 0
+                        db.Database.ExecuteSqlRaw("DBCC CHECKIDENT ('HocSinh', RESEED, 0)");
+                        MessageBox.Show("Đã xóa sạch lớp học và reset ID về 1 thành công!");
+                    }
+                    LoadData(); // Cập nhật lại GridView (bây giờ sẽ trống trơn)
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Không thể reset vì: " + ex.Message + "\n(Có thể do đang có Học sinh thuộc các lớp này nên không xóa được)");
+                }
+            }
+        }
+
+        private void chbDangHoc_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chbNghiHoc.Checked) chbNghiHoc.Checked = false;
+        }
+
+        private void chbNghiHoc_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chbDangHoc.Checked) chbDangHoc.Checked = false;
+        }
     }
+    
 }

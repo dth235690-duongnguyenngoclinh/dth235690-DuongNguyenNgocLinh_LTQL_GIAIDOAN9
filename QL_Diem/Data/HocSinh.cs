@@ -15,6 +15,9 @@ namespace QL_Diem.Data
         public DateTime NgaySinh { get; set; }
         public string GioiTinh { get; set; }
         public string DiaChi { get; set; }
+        public string NamHoc { get; set; }
+        public string GiaoVienChuNhiem { get; set; }
+
         public string SoDienThoaiPhuHuynh { get; set; }
         // Liên kết với lớp học (Quan hệ 1 lớp - nhiều học sinh)
         public int LopID { get; set; }

@@ -1,9 +1,5 @@
 ﻿using QL_Diem.Data;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace QL_DiemTruongTieuHoc.Data
 {
@@ -17,15 +13,24 @@ namespace QL_DiemTruongTieuHoc.Data
         public int MonHocID { get; set; }
         public virtual MonHoc MonHoc { get; set; }
 
-        // Dữ liệu điểm số & Đánh giá 
+        // Điểm kiểm tra thường xuyên
+        public double? KTThuongXuyen1 { get; set; }
+        public double? KTThuongXuyen2 { get; set; }
+        public double? KTThuongXuyen3 { get; set; }
+
+        // Điểm giữa kỳ và cuối kỳ
         public double? DiemGiuaKy { get; set; }
         public double? DiemCuoiKy { get; set; }
-        public string HocKy { get; set; } // "Học kỳ 1", "Học kỳ 2"
-        public string NamHoc { get; set; } // Ví dụ: 2025-2026
-        // Đặc thù Tiểu học: Nhận xét & Xếp loại 
+
+        // Thông tin học kỳ, năm học
+        public string HocKy { get; set; }   // "Học kỳ 1", "Học kỳ 2"
+        public string NamHoc { get; set; } // Ví dụ: "2025-2026"
+
+        // Nhận xét & Đánh giá
         public string NhanXet { get; set; }
-        public string DanhGia { get; set; } // Hoàn thành tốt, Hoàn thành...
+        public string DanhGia { get; set; } // Hoàn thành tốt, Hoàn thành, Chưa hoàn thành
+
         public DateTime NgayCapNhat { get; set; }
-        public bool IsLock { get; set; } // Khóa điểm sau khi đã phê duyệt để đảm bảo tính "Liêm" [cite: 99]
+        public bool IsLock { get; set; }    // Khóa điểm sau khi phê duyệt
     }
 }

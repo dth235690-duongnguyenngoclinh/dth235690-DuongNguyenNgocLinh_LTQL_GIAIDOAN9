@@ -1,13 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using QL_DiemTruongTieuHoc.Data;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace QL_Diem.Forms
@@ -24,6 +18,7 @@ namespace QL_Diem.Forms
             LoadComboBox();
             LoadData();
         }
+
         private void LoadComboBox()
         {
             cmbDanhGia.Items.Clear();
@@ -32,16 +27,15 @@ namespace QL_Diem.Forms
             cmbDanhGia.Items.Add("Chưa hoàn thành");
             cmbDanhGia.SelectedIndex = 0;
 
-            // Em có thể thêm danh sách Học kỳ nếu muốn
             cmbHocKy.Text = "Học kỳ 1";
         }
+
         private void LoadData()
         {
             try
             {
                 using (var db = new QLDiemDbContext())
                 {
-                    // Join với bảng MonHoc và HocSinh để lấy Mã thay vì lấy ID số
                     var data = db.QLDiems.Select(d => new
                     {
                         d.ID,
@@ -58,7 +52,6 @@ namespace QL_Diem.Forms
 
                     dgvQLDiem.DataSource = data;
 
-                    // Chỉnh tiêu đề cột cho đẹp
                     if (dgvQLDiem.Columns.Count > 0)
                     {
                         dgvQLDiem.Columns["ID"].HeaderText = "ID";
@@ -69,6 +62,8 @@ namespace QL_Diem.Forms
                         dgvQLDiem.Columns["HocKy"].HeaderText = "HỌC KỲ";
                         dgvQLDiem.Columns["NamHoc"].HeaderText = "NĂM HỌC";
                         dgvQLDiem.Columns["DanhGia"].HeaderText = "ĐÁNH GIÁ";
+                        dgvQLDiem.Columns["NhanXet"].HeaderText = "NHẬN XÉT";
+                        dgvQLDiem.Columns["NgayCapNhat"].HeaderText = "NGÀY CẬP NHẬT";
                     }
                 }
             }
@@ -90,7 +85,6 @@ namespace QL_Diem.Forms
             {
                 using (var db = new QLDiemDbContext())
                 {
-                    // Tìm ID của Môn học và Học sinh dựa trên Mã nhập vào
                     var mon = db.MonHoc.FirstOrDefault(m => m.MaMon == txtMaMon.Text.Trim());
                     var hs = db.HocSinhs.FirstOrDefault(h => h.MaHocSinh == txtMaHocSinh.Text.Trim());
 
@@ -189,7 +183,8 @@ namespace QL_Diem.Forms
             dtpkNamHoc.Value = DateTime.Now;
             cmbDanhGia.SelectedIndex = 0;
         }
-        private void dgvBangDiem_CellClick(object sender, DataGridViewCellEventArgs e)
+
+        private void dgvQLDiem_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0 && dgvQLDiem.CurrentRow != null)
             {
@@ -204,20 +199,15 @@ namespace QL_Diem.Forms
                 txtNhanXet.Text = r.Cells["NhanXet"].Value?.ToString();
             }
         }
+
         private void btnO_Click(object sender, EventArgs e)
         {
             using (var db = new QLDiemDbContext())
             {
-                // 1. Xóa sạch dữ liệu trong bảng TaiKhoan
-                // Lưu ý: Tên bảng trong Database của em thường là 'TaiKhoans' (có chữ s)
-                db.Database.ExecuteSqlRaw("DELETE FROM QLDiem");
-
-                // 2. Lệnh reset ID (Identity) quay về 0
-                db.Database.ExecuteSqlRaw("DBCC CHECKIDENT ('QLDiem', RESEED, 0)");
-
-                MessageBox.Show("Đã dọn dẹp và reset ID về 1 thành công!");
+                db.Database.ExecuteSqlRaw("DELETE FROM QLDiems");
+                db.Database.ExecuteSqlRaw("DBCC CHECKIDENT ('QLDiems', RESEED, 0)");
             }
-            LoadData(); // Load lại bảng trắng tinh
+            LoadData();
         }
     }
 }

@@ -56,6 +56,7 @@
             txtID = new TextBox();
             label1 = new Label();
             panel1 = new Panel();
+            cmbHocKy = new ComboBox();
             cmbDanhGia = new ComboBox();
             dtpkNgayCapNhat = new DateTimePicker();
             label8 = new Label();
@@ -66,7 +67,6 @@
             txtDiemCuoiKy = new TextBox();
             txtDiemGiuaKy = new TextBox();
             label4 = new Label();
-            cmbHocKy = new ComboBox();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvQLDiem).BeginInit();
             panel1.SuspendLayout();
@@ -375,6 +375,16 @@
             panel1.Size = new Size(757, 194);
             panel1.TabIndex = 2;
             // 
+            // cmbHocKy
+            // 
+            cmbHocKy.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbHocKy.FormattingEnabled = true;
+            cmbHocKy.Items.AddRange(new object[] { "I", "II" });
+            cmbHocKy.Location = new Point(383, 49);
+            cmbHocKy.Name = "cmbHocKy";
+            cmbHocKy.Size = new Size(65, 25);
+            cmbHocKy.TabIndex = 56;
+            // 
             // cmbDanhGia
             // 
             cmbDanhGia.DropDownStyle = ComboBoxStyle.DropDownList;
@@ -388,7 +398,7 @@
             // dtpkNgayCapNhat
             // 
             dtpkNgayCapNhat.Format = DateTimePickerFormat.Short;
-            dtpkNgayCapNhat.Location = new Point(439, 86);
+            dtpkNgayCapNhat.Location = new Point(449, 86);
             dtpkNgayCapNhat.Name = "dtpkNgayCapNhat";
             dtpkNgayCapNhat.Size = new Size(143, 25);
             dtpkNgayCapNhat.TabIndex = 8;
@@ -396,17 +406,18 @@
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(301, 91);
+            label8.Font = new Font("Times New Roman", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label8.Location = new Point(301, 89);
             label8.Margin = new Padding(4, 0, 4, 0);
             label8.Name = "label8";
-            label8.Size = new Size(131, 17);
+            label8.Size = new Size(141, 19);
             label8.TabIndex = 55;
             label8.Text = "NGÀY CẬP NHẬT:";
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Font = new Font("Times New Roman", 10.2F);
+            label5.Font = new Font("Times New Roman", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label5.Location = new Point(301, 52);
             label5.Name = "label5";
             label5.Size = new Size(76, 19);
@@ -442,7 +453,7 @@
             // txtDiemCuoiKy
             // 
             txtDiemCuoiKy.Font = new Font("Times New Roman", 10.2F);
-            txtDiemCuoiKy.Location = new Point(207, 86);
+            txtDiemCuoiKy.Location = new Point(207, 85);
             txtDiemCuoiKy.Name = "txtDiemCuoiKy";
             txtDiemCuoiKy.Size = new Size(78, 27);
             txtDiemCuoiKy.TabIndex = 7;
@@ -464,16 +475,6 @@
             label4.Size = new Size(127, 19);
             label4.TabIndex = 47;
             label4.Text = "ĐIỂM CUỐI KỲ:";
-            // 
-            // cmbHocKy
-            // 
-            cmbHocKy.DropDownStyle = ComboBoxStyle.DropDownList;
-            cmbHocKy.FormattingEnabled = true;
-            cmbHocKy.Items.AddRange(new object[] { "I", "II" });
-            cmbHocKy.Location = new Point(383, 49);
-            cmbHocKy.Name = "cmbHocKy";
-            cmbHocKy.Size = new Size(65, 25);
-            cmbHocKy.TabIndex = 56;
             // 
             // fQLDiem
             // 

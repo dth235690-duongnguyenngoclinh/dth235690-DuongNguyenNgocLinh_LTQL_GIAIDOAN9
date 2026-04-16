@@ -15,10 +15,10 @@ namespace QL_Diem
             ApplicationConfiguration.Initialize();
             //Application.Run(new fDangNhap());
             //Application.Run(new fTaiKhoan());
-            Application.Run(new fHocSinh());
+            //Application.Run(new fHocSinh());
             //Application.Run(new fMonHoc());
             //Application.Run(new fLop());
-            //Application.Run(new fQLDiem());
+            Application.Run(new fQLDiem());
             
         }
     }

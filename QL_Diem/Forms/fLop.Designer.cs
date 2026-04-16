@@ -29,10 +29,15 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
+            chbDaKetThuc = new CheckBox();
+            txtPhongHoc = new TextBox();
+            label8 = new Label();
+            txtKhoiLop = new TextBox();
+            label7 = new Label();
+            txtNamHoc = new TextBox();
             btnO = new Button();
-            dtpkNamHoc = new DateTimePicker();
             label6 = new Label();
-            cmbGVCN = new ComboBox();
+            cmbGiaoVienChuNhiem = new ComboBox();
             label5 = new Label();
             numSoLuong = new NumericUpDown();
             label4 = new Label();
@@ -52,9 +57,12 @@
             ID = new DataGridViewTextBoxColumn();
             MaLop = new DataGridViewTextBoxColumn();
             TenLop = new DataGridViewTextBoxColumn();
-            GiaoVienChuNhiem = new DataGridViewTextBoxColumn();
+            KhoiLop = new DataGridViewTextBoxColumn();
             SoLuong = new DataGridViewTextBoxColumn();
+            GiaoVienChuNhiem = new DataGridViewTextBoxColumn();
+            PhongHoc = new DataGridViewTextBoxColumn();
             NamHoc = new DataGridViewTextBoxColumn();
+            DaKetThuc = new DataGridViewTextBoxColumn();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)numSoLuong).BeginInit();
             panel2.SuspendLayout();
@@ -63,10 +71,15 @@
             // 
             // panel1
             // 
+            panel1.Controls.Add(chbDaKetThuc);
+            panel1.Controls.Add(txtPhongHoc);
+            panel1.Controls.Add(label8);
+            panel1.Controls.Add(txtKhoiLop);
+            panel1.Controls.Add(label7);
+            panel1.Controls.Add(txtNamHoc);
             panel1.Controls.Add(btnO);
-            panel1.Controls.Add(dtpkNamHoc);
             panel1.Controls.Add(label6);
-            panel1.Controls.Add(cmbGVCN);
+            panel1.Controls.Add(cmbGiaoVienChuNhiem);
             panel1.Controls.Add(label5);
             panel1.Controls.Add(numSoLuong);
             panel1.Controls.Add(label4);
@@ -87,42 +100,88 @@
             panel1.Size = new Size(680, 167);
             panel1.TabIndex = 0;
             // 
+            // chbDaKetThuc
+            // 
+            chbDaKetThuc.AutoSize = true;
+            chbDaKetThuc.Location = new Point(585, 81);
+            chbDaKetThuc.Name = "chbDaKetThuc";
+            chbDaKetThuc.Size = new Size(89, 23);
+            chbDaKetThuc.TabIndex = 7;
+            chbDaKetThuc.Text = "Kết thúc";
+            chbDaKetThuc.UseVisualStyleBackColor = true;
+            // 
+            // txtPhongHoc
+            // 
+            txtPhongHoc.Location = new Point(131, 119);
+            txtPhongHoc.MaxLength = 255;
+            txtPhongHoc.Name = "txtPhongHoc";
+            txtPhongHoc.Size = new Size(60, 27);
+            txtPhongHoc.TabIndex = 8;
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Location = new Point(13, 123);
+            label8.Margin = new Padding(4, 0, 4, 0);
+            label8.Name = "label8";
+            label8.Size = new Size(111, 19);
+            label8.TabIndex = 27;
+            label8.Text = "PHÒNG HỌC:";
+            // 
+            // txtKhoiLop
+            // 
+            txtKhoiLop.Location = new Point(111, 76);
+            txtKhoiLop.MaxLength = 255;
+            txtKhoiLop.Name = "txtKhoiLop";
+            txtKhoiLop.Size = new Size(60, 27);
+            txtKhoiLop.TabIndex = 4;
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Location = new Point(13, 79);
+            label7.Margin = new Padding(4, 0, 4, 0);
+            label7.Name = "label7";
+            label7.Size = new Size(91, 19);
+            label7.TabIndex = 25;
+            label7.Text = "KHỐI LỚP:";
+            // 
+            // txtNamHoc
+            // 
+            txtNamHoc.Location = new Point(447, 79);
+            txtNamHoc.MaxLength = 255;
+            txtNamHoc.Name = "txtNamHoc";
+            txtNamHoc.Size = new Size(132, 27);
+            txtNamHoc.TabIndex = 6;
+            // 
             // btnO
             // 
-            btnO.Location = new Point(539, 121);
+            btnO.Location = new Point(628, 119);
             btnO.Name = "btnO";
             btnO.Size = new Size(35, 27);
-            btnO.TabIndex = 24;
+            btnO.TabIndex = 14;
             btnO.Text = "O";
             btnO.UseVisualStyleBackColor = true;
             btnO.Click += btnO_Click;
             // 
-            // dtpkNamHoc
-            // 
-            dtpkNamHoc.Format = DateTimePickerFormat.Short;
-            dtpkNamHoc.Location = new Point(403, 77);
-            dtpkNamHoc.Name = "dtpkNamHoc";
-            dtpkNamHoc.Size = new Size(143, 27);
-            dtpkNamHoc.TabIndex = 5;
-            // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(305, 81);
+            label6.Location = new Point(349, 83);
             label6.Margin = new Padding(4, 0, 4, 0);
             label6.Name = "label6";
             label6.Size = new Size(91, 19);
             label6.TabIndex = 23;
             label6.Text = "NĂM HỌC:";
             // 
-            // cmbGVCN
+            // cmbGiaoVienChuNhiem
             // 
-            cmbGVCN.FormattingEnabled = true;
-            cmbGVCN.Items.AddRange(new object[] { "Đặng Thanh Hiếu", "Bùi Ngọc Hoa", "Thanh Thanh Tăng", "Lương Kim Tuyền", "Huỳnh TRung Kiên", "Dương Ngọc Nga", "Thái Thanh Ngân", "Nguyễn Minh Ngọc", "Bùi Minh Kha" });
-            cmbGVCN.Location = new Point(491, 32);
-            cmbGVCN.Name = "cmbGVCN";
-            cmbGVCN.Size = new Size(181, 27);
-            cmbGVCN.TabIndex = 3;
+            cmbGiaoVienChuNhiem.FormattingEnabled = true;
+            cmbGiaoVienChuNhiem.Items.AddRange(new object[] { "Đặng Thanh Hiếu", "Bùi Ngọc Hoa", "Thanh Thanh Tăng", "Lương Kim Tuyền", "Huỳnh Trung Kiên", "Dương Ngọc Nga", "Thái Thanh Ngân", "Nguyễn Minh Ngọc", "Bùi Minh Kha", "Doãn Ngọc Tân", "Lê Minh Hiếu", "Huỳnh Thanh Nhẹ\t", "Trần Ba Vạn", "Phạm Hồng Thái", "Phạm Thị Cẩm Hồng", "Nguyễn Bích Châu", "Huỳnh Thị Yến Nhi", "Nguyễn Minh Trực", "Trần Thị Bích Thủy", "Lý Minh Kha" });
+            cmbGiaoVienChuNhiem.Location = new Point(491, 32);
+            cmbGiaoVienChuNhiem.Name = "cmbGiaoVienChuNhiem";
+            cmbGiaoVienChuNhiem.Size = new Size(181, 27);
+            cmbGiaoVienChuNhiem.TabIndex = 3;
             // 
             // label5
             // 
@@ -136,15 +195,15 @@
             // 
             // numSoLuong
             // 
-            numSoLuong.Location = new Point(204, 77);
+            numSoLuong.Location = new Point(293, 79);
             numSoLuong.Name = "numSoLuong";
             numSoLuong.Size = new Size(49, 27);
-            numSoLuong.TabIndex = 4;
+            numSoLuong.TabIndex = 5;
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(99, 81);
+            label4.Location = new Point(188, 83);
             label4.Margin = new Padding(4, 0, 4, 0);
             label4.Name = "label4";
             label4.Size = new Size(98, 19);
@@ -154,10 +213,10 @@
             // btnThoat
             // 
             btnThoat.Font = new Font("Times New Roman", 10.2F);
-            btnThoat.Location = new Point(358, 121);
+            btnThoat.Location = new Point(447, 117);
             btnThoat.Name = "btnThoat";
             btnThoat.Size = new Size(74, 30);
-            btnThoat.TabIndex = 9;
+            btnThoat.TabIndex = 12;
             btnThoat.Text = "Thoát";
             btnThoat.UseVisualStyleBackColor = true;
             btnThoat.Click += btnThoat_Click;
@@ -165,10 +224,10 @@
             // btnLamMoi
             // 
             btnLamMoi.Font = new Font("Times New Roman", 10.2F);
-            btnLamMoi.Location = new Point(438, 121);
+            btnLamMoi.Location = new Point(527, 117);
             btnLamMoi.Name = "btnLamMoi";
             btnLamMoi.Size = new Size(86, 30);
-            btnLamMoi.TabIndex = 10;
+            btnLamMoi.TabIndex = 13;
             btnLamMoi.Text = "Làm mới";
             btnLamMoi.UseVisualStyleBackColor = true;
             btnLamMoi.Click += btnLamMoi_Click;
@@ -176,10 +235,10 @@
             // btnXoa
             // 
             btnXoa.Font = new Font("Times New Roman", 10.2F);
-            btnXoa.Location = new Point(278, 121);
+            btnXoa.Location = new Point(367, 117);
             btnXoa.Name = "btnXoa";
             btnXoa.Size = new Size(74, 30);
-            btnXoa.TabIndex = 8;
+            btnXoa.TabIndex = 11;
             btnXoa.Text = "Xóa";
             btnXoa.UseVisualStyleBackColor = true;
             btnXoa.Click += btnXoa_Click;
@@ -187,10 +246,10 @@
             // btnSua
             // 
             btnSua.Font = new Font("Times New Roman", 10.2F);
-            btnSua.Location = new Point(198, 121);
+            btnSua.Location = new Point(287, 117);
             btnSua.Name = "btnSua";
             btnSua.Size = new Size(74, 30);
-            btnSua.TabIndex = 7;
+            btnSua.TabIndex = 10;
             btnSua.Text = "Sửa";
             btnSua.UseVisualStyleBackColor = true;
             btnSua.Click += btnSua_Click;
@@ -198,10 +257,10 @@
             // btnThem
             // 
             btnThem.Font = new Font("Times New Roman", 10.2F);
-            btnThem.Location = new Point(118, 121);
+            btnThem.Location = new Point(207, 117);
             btnThem.Name = "btnThem";
             btnThem.Size = new Size(74, 30);
-            btnThem.TabIndex = 6;
+            btnThem.TabIndex = 9;
             btnThem.Text = "Thêm";
             btnThem.UseVisualStyleBackColor = true;
             btnThem.Click += btnThem_Click;
@@ -274,7 +333,7 @@
             dgvLop.AllowUserToAddRows = false;
             dgvLop.AllowUserToDeleteRows = false;
             dgvLop.ColumnHeadersHeight = 29;
-            dgvLop.Columns.AddRange(new DataGridViewColumn[] { ID, MaLop, TenLop, GiaoVienChuNhiem, SoLuong, NamHoc });
+            dgvLop.Columns.AddRange(new DataGridViewColumn[] { ID, MaLop, TenLop, KhoiLop, SoLuong, GiaoVienChuNhiem, PhongHoc, NamHoc, DaKetThuc });
             dgvLop.Dock = DockStyle.Fill;
             dgvLop.Location = new Point(0, 0);
             dgvLop.Margin = new Padding(4);
@@ -317,14 +376,14 @@
             TenLop.ReadOnly = true;
             TenLop.Width = 130;
             // 
-            // GiaoVienChuNhiem
+            // KhoiLop
             // 
-            GiaoVienChuNhiem.DataPropertyName = "GiaoVienChuNhiem";
-            GiaoVienChuNhiem.HeaderText = "GIÁO VIÊN CHỦ NHIỆM";
-            GiaoVienChuNhiem.MinimumWidth = 6;
-            GiaoVienChuNhiem.Name = "GiaoVienChuNhiem";
-            GiaoVienChuNhiem.ReadOnly = true;
-            GiaoVienChuNhiem.Width = 300;
+            KhoiLop.DataPropertyName = "KhoiLop";
+            KhoiLop.HeaderText = "KHỐI LỚP";
+            KhoiLop.MinimumWidth = 6;
+            KhoiLop.Name = "KhoiLop";
+            KhoiLop.ReadOnly = true;
+            KhoiLop.Width = 125;
             // 
             // SoLuong
             // 
@@ -335,6 +394,24 @@
             SoLuong.ReadOnly = true;
             SoLuong.Width = 130;
             // 
+            // GiaoVienChuNhiem
+            // 
+            GiaoVienChuNhiem.DataPropertyName = "GiaoVienChuNhiem";
+            GiaoVienChuNhiem.HeaderText = "GIÁO VIÊN CHỦ NHIỆM";
+            GiaoVienChuNhiem.MinimumWidth = 6;
+            GiaoVienChuNhiem.Name = "GiaoVienChuNhiem";
+            GiaoVienChuNhiem.ReadOnly = true;
+            GiaoVienChuNhiem.Width = 300;
+            // 
+            // PhongHoc
+            // 
+            PhongHoc.DataPropertyName = "PhongHoc";
+            PhongHoc.HeaderText = "PHÒNG HỌC";
+            PhongHoc.MinimumWidth = 6;
+            PhongHoc.Name = "PhongHoc";
+            PhongHoc.ReadOnly = true;
+            PhongHoc.Width = 125;
+            // 
             // NamHoc
             // 
             NamHoc.DataPropertyName = "NamHoc";
@@ -343,6 +420,15 @@
             NamHoc.Name = "NamHoc";
             NamHoc.ReadOnly = true;
             NamHoc.Width = 150;
+            // 
+            // DaKetThuc
+            // 
+            DaKetThuc.DataPropertyName = "DaKetThuc";
+            DaKetThuc.HeaderText = "ĐÃ KẾT THÚC";
+            DaKetThuc.MinimumWidth = 6;
+            DaKetThuc.Name = "DaKetThuc";
+            DaKetThuc.ReadOnly = true;
+            DaKetThuc.Width = 125;
             // 
             // fLop
             // 
@@ -383,15 +469,23 @@
         private NumericUpDown numSoLuong;
         private Label label4;
         private Label label5;
-        private ComboBox cmbGVCN;
+        private ComboBox cmbGiaoVienChuNhiem;
         private Label label6;
-        private DateTimePicker dtpkNamHoc;
         private Button btnO;
+        private TextBox txtNamHoc;
         private DataGridViewTextBoxColumn ID;
         private DataGridViewTextBoxColumn MaLop;
         private DataGridViewTextBoxColumn TenLop;
-        private DataGridViewTextBoxColumn GiaoVienChuNhiem;
+        private DataGridViewTextBoxColumn KhoiLop;
         private DataGridViewTextBoxColumn SoLuong;
+        private DataGridViewTextBoxColumn GiaoVienChuNhiem;
+        private DataGridViewTextBoxColumn PhongHoc;
         private DataGridViewTextBoxColumn NamHoc;
+        private DataGridViewTextBoxColumn DaKetThuc;
+        private TextBox txtPhongHoc;
+        private Label label8;
+        private TextBox txtKhoiLop;
+        private Label label7;
+        private CheckBox chbDaKetThuc;
     }
 }

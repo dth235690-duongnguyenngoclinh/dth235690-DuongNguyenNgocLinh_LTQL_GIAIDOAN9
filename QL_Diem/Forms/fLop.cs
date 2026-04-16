@@ -40,7 +40,10 @@ namespace QL_Diem.Forms
                         l.TenLop,
                         l.GiaoVienChuNhiem,
                         l.SoLuong,
-                        l.NamHoc
+                        l.NamHoc,
+                        l.KhoiLop,
+                        l.PhongHoc,
+                        DaKetThuc = l.DaKetThuc ? "Đã kết thúc" : "Đang học"
                     }).ToList();
 
                     dgvLop.DataSource = data;
@@ -71,7 +74,6 @@ namespace QL_Diem.Forms
                 MessageBox.Show("Vui lòng nhập đầy đủ Mã lớp và Tên lớp!");
                 return;
             }
-
             try
             {
                 using (var db = new QLDiemDbContext())
@@ -88,18 +90,16 @@ namespace QL_Diem.Forms
                     {
                         MaLop = txtMaLop.Text.Trim(),
                         TenLop = txtTenLop.Text.Trim(),
-                        GiaoVienChuNhiem = cmbGVCN.Text,
+                        GiaoVienChuNhiem = cmbGiaoVienChuNhiem.Text,
                         SoLuong = (int)numSoLuong.Value,
-                        NamHoc = dtpkNamHoc.Value.Year.ToString(),
-
-                        // --- PHẦN QUAN TRỌNG: Gán giá trị mặc định cho các cột còn thiếu ---
-                        KhoiLop = 1,          // Tạm thời để là khối 1 (Bạn có thể sửa tùy ý)
-                        PhongHoc = "Chưa xếp", // Tránh để null nếu DB không cho phép
-                        DaKetThuc = false     // Lớp mới tạo thì tất nhiên là chưa kết thúc
+                        NamHoc = txtNamHoc.Text.Trim(),
+                        KhoiLop = int.TryParse(txtKhoiLop.Text.Trim(), out int khoi) ? khoi : 0,
+                        PhongHoc = txtPhongHoc.Text.Trim(),
+                        DaKetThuc = chbDaKetThuc.Checked    // dùng CheckBox
                     };
 
                     db.LopHocs.Add(lop);
-                    db.SaveChanges(); // Lưu vào Database
+                    db.SaveChanges();
                 }
 
                 // 4. Cập nhật lại giao diện sau khi thêm thành công
@@ -125,6 +125,7 @@ namespace QL_Diem.Forms
             txtTenLop.Clear();
             numSoLuong.Value = 0;
             txtMaLop.Focus();
+            txtNamHoc.Clear();
         }
         // 4. Sự kiện click bảng đổ dữ liệu lên control
         private void dgvLop_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -136,23 +137,17 @@ namespace QL_Diem.Forms
                 {
                     var r = dgvLop.CurrentRow;
 
-                    // Cách an toàn nhất: Lấy giá trị theo đúng tên thuộc tính bạn đã Select ở LoadData
                     txtID.Text = r.Cells["ID"].Value?.ToString();
                     txtMaLop.Text = r.Cells["MaLop"].Value?.ToString();
                     txtTenLop.Text = r.Cells["TenLop"].Value?.ToString();
+                    txtNamHoc.Text = r.Cells["NamHoc"].Value?.ToString();
+                    cmbGiaoVienChuNhiem.Text = r.Cells["GiaoVienChuNhiem"].Value?.ToString() ?? "";
+                    numSoLuong.Value = Convert.ToDecimal(r.Cells["SoLuong"].Value ?? 0);
 
-                    // Dùng ?.ToString() để tránh lỗi Crash nếu dữ liệu trong ô đó bị Null
-                    cmbGVCN.Text = r.Cells["GiaoVienChuNhiem"].Value?.ToString() ?? "";
+                    txtKhoiLop.Text = r.Cells["KhoiLop"].Value?.ToString();
+                    txtPhongHoc.Text = r.Cells["PhongHoc"].Value?.ToString();
+                    chbDaKetThuc.Checked = (r.Cells["DaKetThuc"].Value?.ToString() == "Đã kết thúc");
 
-                    // Xử lý số lượng (ép kiểu cẩn thận)
-                    if (r.Cells["SoLuong"].Value != null)
-                    {
-                        numSoLuong.Value = Convert.ToDecimal(r.Cells["SoLuong"].Value);
-                    }
-                    else
-                    {
-                        numSoLuong.Value = 0;
-                    }
                 }
                 catch (Exception ex)
                 {
@@ -176,9 +171,14 @@ namespace QL_Diem.Forms
                 {
                     lop.MaLop = txtMaLop.Text.Trim();
                     lop.TenLop = txtTenLop.Text.Trim();
-                    lop.GiaoVienChuNhiem = cmbGVCN.Text;
+                    lop.GiaoVienChuNhiem = cmbGiaoVienChuNhiem.Text;
                     lop.SoLuong = (int)numSoLuong.Value;
-                    lop.NamHoc = "2025-2026"; // Đảm bảo không bị null khi sửa
+                    lop.NamHoc = txtNamHoc.Text.Trim();
+
+                    // Bổ sung các thuộc tính còn thiếu
+                    lop.KhoiLop = int.TryParse(txtKhoiLop.Text.Trim(), out int khoi) ? khoi : 0;
+                    lop.PhongHoc = txtPhongHoc.Text.Trim();
+                    lop.DaKetThuc = chbDaKetThuc.Checked;
 
                     db.SaveChanges();
                     LoadData();
